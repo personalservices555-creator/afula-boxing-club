@@ -98,9 +98,18 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
   <div class="auth-box">
     <div class="auth-logo">Box<span>IL</span><small>פורטל מאמנים</small></div>
 
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchTab('login')">כניסה</button>
-      <button class="auth-tab" onclick="switchTab('register')">הרשמה</button>
+    <!-- FIRST-TIME LOGIN BANNER -->
+    <div id="first-time-banner" style="background:rgba(245,197,24,.07);border:1px solid rgba(245,197,24,.2);border-radius:4px;padding:.85rem 1rem;margin:1.4rem 0 1rem;cursor:pointer" onclick="toggleFirstTimeBanner()">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:.8rem;font-weight:700;color:var(--yellow)">🔑 כניסה ראשונה למערכת?</span>
+        <span id="banner-arrow" style="color:rgba(255,255,255,.3);font-size:.75rem">▼</span>
+      </div>
+      <div id="banner-body" style="display:none;margin-top:.65rem;font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.7">
+        הזן את המייל שבו נרשמת למערכת ←<br>
+        לחץ <strong style="color:var(--yellow)">"שכחתי סיסמא"</strong> ←<br>
+        קבל מייל לאיפוס ובחר סיסמה משלך ←<br>
+        התחבר עם המייל והסיסמה החדשה
+      </div>
     </div>
 
     <!-- LOGIN FORM -->
@@ -109,6 +118,14 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
         <label>כתובת מייל</label>
         <input type="email" id="login-email" placeholder="trainer@example.com" />
       </div>
+
+      <!-- FORGOT PASSWORD — prominent -->
+      <button onclick="doReset()" style="width:100%;margin-bottom:.75rem;padding:.6rem;background:none;border:1px solid rgba(245,197,24,.25);border-radius:3px;color:var(--yellow);font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(245,197,24,.07)'" onmouseout="this.style.background='none'">
+        שכחתי סיסמא — שלח לי מייל לאיפוס
+      </button>
+
+      <div class="auth-separator">או כניסה עם סיסמה קיימת</div>
+
       <div class="form-group">
         <label>סיסמה</label>
         <div class="pass-toggle">
@@ -119,31 +136,6 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
       <button class="btn-auth" onclick="doLogin()" id="btn-login">כניסה לפורטל ←</button>
       <div class="auth-err" id="login-err"></div>
       <div class="auth-note">
-        שכחת סיסמה? <a href="#" onclick="doReset()">לחץ כאן לאיפוס</a>
-      </div>
-    </div>
-
-    <!-- REGISTER FORM -->
-    <div id="form-register" style="display:none">
-      <div class="form-group">
-        <label>כתובת מייל</label>
-        <input type="email" id="reg-email" placeholder="trainer@example.com" />
-      </div>
-      <div class="form-group">
-        <label>בחר סיסמה</label>
-        <div class="pass-toggle">
-          <input type="password" id="reg-pass" placeholder="לפחות 6 תווים" />
-          <button class="pass-toggle-btn" onclick="togglePass('reg-pass',this)" tabindex="-1">👁</button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>אימות סיסמה</label>
-        <input type="password" id="reg-pass2" placeholder="הזן שוב" onkeydown="if(event.key==='Enter')doRegister()" />
-      </div>
-      <button class="btn-auth" onclick="doRegister()" id="btn-register">צור חשבון</button>
-      <div class="auth-err" id="register-err"></div>
-      <div class="auth-note">
-        לאחר ההרשמה, החשבון ייפתח לאחר אישור תשלום.<br>
         שאלות? <a href="https://wa.me/9720548274422" target="_blank">דברו איתנו בוואטסאפ</a>
       </div>
     </div>
@@ -324,30 +316,12 @@ window.doLogin = async function() {
   }
 };
 
-// ---- REGISTER ----
-window.doRegister = async function() {
-  const email = document.getElementById('reg-email').value.trim();
-  const pass  = document.getElementById('reg-pass').value;
-  const pass2 = document.getElementById('reg-pass2').value;
-  const btn   = document.getElementById('btn-register');
-  const err   = document.getElementById('register-err');
-  err.textContent = '';
-  if (!email || !pass) { err.textContent = 'מלא מייל וסיסמה'; return; }
-  if (pass !== pass2)  { err.textContent = 'הסיסמאות אינן תואמות'; return; }
-  if (pass.length < 6) { err.textContent = 'סיסמה חייבת להכיל לפחות 6 תווים'; return; }
-  btn.disabled = true; btn.textContent = '...';
-  try {
-    await createUserWithEmailAndPassword(auth, email, pass);
-    // onAuthStateChanged handles the rest — will set pending
-  } catch(e) {
-    const msgs = {
-      'auth/email-already-in-use': 'מייל זה כבר רשום — נסה להתחבר',
-      'auth/invalid-email':        'כתובת מייל לא תקינה',
-      'auth/weak-password':        'הסיסמה חלשה מדי'
-    };
-    err.textContent = msgs[e.code] || 'שגיאה — נסה שוב';
-    btn.disabled = false; btn.textContent = 'צור חשבון';
-  }
+window.toggleFirstTimeBanner = function() {
+  const body  = document.getElementById('banner-body');
+  const arrow = document.getElementById('banner-arrow');
+  const open  = body.style.display === 'none';
+  body.style.display  = open ? 'block' : 'none';
+  arrow.textContent   = open ? '▲' : '▼';
 };
 
 // ---- RESET PASSWORD ----
