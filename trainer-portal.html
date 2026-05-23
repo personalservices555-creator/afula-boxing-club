@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoxIL — פורטל מאמנים</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#D72B2B;--red-dark:#9E1111;--yellow:#F5C518;--black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--gray:#2A2A2A;--white:#FFFFFF}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);direction:rtl;min-height:100vh;display:flex;flex-direction:column}
+
+/* AUTH SCREEN */
+#auth-screen{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--black)}
+#auth-screen::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 40%,rgba(215,43,43,.08),transparent 70%);pointer-events:none}
+.auth-box{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-top:3px solid var(--red);border-radius:6px;padding:2.5rem 2rem;width:100%;max-width:400px;position:relative}
+.auth-logo{text-align:center;font-size:1.4rem;font-weight:900;margin-bottom:.25rem}
+.auth-logo span{color:var(--red)}
+.auth-logo small{display:block;font-size:.6rem;font-weight:300;color:rgba(255,255,255,.3);letter-spacing:.15em;margin-top:.1rem}
+.auth-tabs{display:flex;gap:0;background:rgba(255,255,255,.04);border-radius:4px;padding:3px;margin:1.6rem 0 1.4rem}
+.auth-tab{flex:1;border:none;background:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:.83rem;font-weight:700;padding:.5rem;border-radius:3px;cursor:pointer;transition:all .2s}
+.auth-tab.active{background:var(--red);color:var(--white)}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:.35rem;letter-spacing:.06em}
+.form-group input{width:100%;padding:.65rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:3px;color:var(--white);font-family:inherit;font-size:.9rem;outline:none;transition:border-color .2s;direction:ltr;text-align:right}
+.form-group input:focus{border-color:var(--red)}
+.form-group input::placeholder{color:rgba(255,255,255,.2);direction:rtl}
+.form-group input[type="email"]{text-align:left}
+.form-group input[type="email"]::placeholder{text-align:right}
+.btn-auth{width:100%;padding:.78rem;background:var(--red);border:none;color:var(--white);font-family:inherit;font-size:.92rem;font-weight:900;border-radius:3px;cursor:pointer;transition:background .2s;margin-top:.4rem}
+.btn-auth:hover{background:var(--red-dark)}
+.btn-auth:disabled{background:rgba(215,43,43,.4);cursor:not-allowed}
+.auth-err{font-size:.78rem;color:#ff6b6b;margin-top:.6rem;text-align:center;min-height:1.2em}
+.auth-note{font-size:.74rem;color:rgba(255,255,255,.3);text-align:center;margin-top:1.2rem;line-height:1.6}
+.auth-note a{color:var(--yellow);text-decoration:none}
+.auth-separator{display:flex;align-items:center;gap:.8rem;margin:.9rem 0;color:rgba(255,255,255,.18);font-size:.75rem}
+.auth-separator::before,.auth-separator::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
+.pass-toggle{position:relative}
+.pass-toggle input{padding-left:2.5rem}
+.pass-toggle-btn{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;font-size:.85rem;padding:0;line-height:1}
+
+/* PENDING SCREEN */
+#pending-screen{display:none;flex:1;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.pending-box{max-width:420px}
+.pending-icon{font-size:3.5rem;margin-bottom:1.2rem}
+.pending-box h2{font-size:1.4rem;font-weight:900;margin-bottom:.7rem}
+.pending-box p{color:rgba(255,255,255,.48);font-size:.9rem;font-weight:300;line-height:1.75;margin-bottom:1.5rem}
+.pending-box .wa-btn{display:inline-block;background:var(--red);color:var(--white);text-decoration:none;font-weight:900;font-size:.9rem;padding:.75rem 1.6rem;border-radius:3px;margin-top:.5rem}
+
+/* DASHBOARD */
+#dashboard{display:none;flex-direction:column;min-height:100vh}
+.dash-nav{background:rgba(10,10,10,.97);border-bottom:1px solid rgba(215,43,43,.2);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.dash-nav-logo{font-size:1rem;font-weight:900}
+.dash-nav-logo span{color:var(--red)}
+.dash-user{display:flex;align-items:center;gap:1rem}
+.dash-email{font-size:.78rem;color:rgba(255,255,255,.38);font-weight:300}
+.dash-logout{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);font-family:inherit;font-size:.75rem;font-weight:700;padding:.35rem .8rem;border-radius:3px;cursor:pointer;transition:all .2s}
+.dash-logout:hover{border-color:var(--red);color:var(--red)}
+.dash-body{flex:1;padding:2.5rem 1.5rem;max-width:900px;margin:0 auto;width:100%}
+.dash-welcome{margin-bottom:2.5rem}
+.dash-welcome h1{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:.3rem}
+.dash-welcome p{color:rgba(255,255,255,.4);font-size:.88rem;font-weight:300}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-bottom:2.5rem}
+.dash-card{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:1.5rem}
+.dash-card .dc-icon{font-size:1.8rem;margin-bottom:.7rem}
+.dash-card h3{font-size:.95rem;font-weight:900;margin-bottom:.3rem}
+.dash-card p{font-size:.8rem;color:rgba(255,255,255,.38);font-weight:300;line-height:1.55}
+.dash-card .dc-num{font-size:2rem;font-weight:900;color:var(--yellow);margin-bottom:.2rem}
+.dash-section-title{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:1rem}
+.schedule-box{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:1.5rem}
+.schedule-box h3{font-size:.95rem;font-weight:900;margin-bottom:.3rem}
+.schedule-box p{font-size:.82rem;color:rgba(255,255,255,.38);font-weight:300;margin-bottom:1.2rem;line-height:1.55}
+.schedule-days{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.day-btn{padding:.4rem .9rem;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:none;color:rgba(255,255,255,.5);font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s}
+.day-btn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:.4rem;margin-bottom:1.2rem}
+.slot-btn{padding:.38rem .3rem;border-radius:3px;border:1px solid rgba(255,255,255,.1);background:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .18s;text-align:center}
+.slot-btn.on{background:rgba(215,43,43,.15);border-color:rgba(215,43,43,.4);color:var(--white)}
+.save-schedule-btn{background:var(--yellow);color:var(--black);border:none;font-family:inherit;font-size:.88rem;font-weight:900;padding:.65rem 1.5rem;border-radius:3px;cursor:pointer;transition:background .2s}
+.save-schedule-btn:hover{background:#d4a700}
+.profile-box{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:1.5rem;margin-top:1.2rem}
+.profile-box h3{font-size:.95rem;font-weight:900;margin-bottom:1rem}
+.profile-form{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:540px){.profile-form{grid-template-columns:1fr}}
+.pf-group label{display:block;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.35);margin-bottom:.3rem}
+.pf-group input{width:100%;padding:.55rem .8rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:3px;color:var(--white);font-family:inherit;font-size:.86rem;outline:none;transition:border-color .2s}
+.pf-group input:focus{border-color:var(--yellow)}
+.profile-save{margin-top:.8rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-family:inherit;font-size:.82rem;font-weight:700;padding:.52rem 1.2rem;border-radius:3px;cursor:pointer;transition:all .2s}
+.profile-save:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark2);border:1px solid rgba(245,197,24,.3);border-top:2px solid var(--yellow);color:var(--white);padding:.65rem 1.4rem;border-radius:3px;font-size:.82rem;font-weight:700;z-index:3000;opacity:0;transition:transform .3s,opacity .3s;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen">
+  <div class="auth-box">
+    <div class="auth-logo">Box<span>IL</span><small>פורטל מאמנים</small></div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login')">כניסה</button>
+      <button class="auth-tab" onclick="switchTab('register')">הרשמה</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="form-login">
+      <div class="form-group">
+        <label>כתובת מייל</label>
+        <input type="email" id="login-email" placeholder="trainer@example.com" />
+      </div>
+      <div class="form-group">
+        <label>סיסמה</label>
+        <div class="pass-toggle">
+          <input type="password" id="login-pass" placeholder="הסיסמה שלך" onkeydown="if(event.key==='Enter')doLogin()" />
+          <button class="pass-toggle-btn" onclick="togglePass('login-pass',this)" tabindex="-1">👁</button>
+        </div>
+      </div>
+      <button class="btn-auth" onclick="doLogin()" id="btn-login">כניסה לפורטל ←</button>
+      <div class="auth-err" id="login-err"></div>
+      <div class="auth-note">
+        שכחת סיסמה? <a href="#" onclick="doReset()">לחץ כאן לאיפוס</a>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="form-register" style="display:none">
+      <div class="form-group">
+        <label>כתובת מייל</label>
+        <input type="email" id="reg-email" placeholder="trainer@example.com" />
+      </div>
+      <div class="form-group">
+        <label>בחר סיסמה</label>
+        <div class="pass-toggle">
+          <input type="password" id="reg-pass" placeholder="לפחות 6 תווים" />
+          <button class="pass-toggle-btn" onclick="togglePass('reg-pass',this)" tabindex="-1">👁</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>אימות סיסמה</label>
+        <input type="password" id="reg-pass2" placeholder="הזן שוב" onkeydown="if(event.key==='Enter')doRegister()" />
+      </div>
+      <button class="btn-auth" onclick="doRegister()" id="btn-register">צור חשבון</button>
+      <div class="auth-err" id="register-err"></div>
+      <div class="auth-note">
+        לאחר ההרשמה, החשבון ייפתח לאחר אישור תשלום.<br>
+        שאלות? <a href="https://wa.me/9720548274422" target="_blank">דברו איתנו בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PENDING SCREEN (registered but not approved) -->
+<div id="pending-screen" style="display:none;flex:1;align-items:center;justify-content:center;padding:2rem;text-align:center">
+  <div class="pending-box">
+    <div class="pending-icon">⏳</div>
+    <h2>ההרשמה התקבלה!</h2>
+    <p>
+      החשבון שלך נוצר בהצלחה.<br>
+      הגישה תיפתח לאחר אישור התשלום.<br><br>
+      בדרך כלל תוך <strong>24 שעות</strong> — נעדכן אותך בוואטסאפ.
+    </p>
+    <a href="https://wa.me/9720548274422?text=היי%20BoxIL%20🥊%0Anנרשמתי%20לפורטל%20המאמנים%20ואני%20רוצה%20לאשר%20תשלום!" target="_blank" rel="noopener noreferrer" class="wa-btn">
+      📲 שלח אישור תשלום בוואטסאפ
+    </a>
+    <div style="margin-top:1.5rem">
+      <button onclick="doLogout()" style="background:none;border:none;color:rgba(255,255,255,.3);font-family:inherit;font-size:.8rem;cursor:pointer;text-decoration:underline">יציאה</button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <nav class="dash-nav">
+    <div class="dash-nav-logo">Box<span>IL</span> <span style="color:rgba(255,255,255,.3);font-weight:300;font-size:.75rem">| פורטל מאמנים</span></div>
+    <div class="dash-user">
+      <span class="dash-email" id="dash-email-label"></span>
+      <button class="dash-logout" onclick="doLogout()">התנתק</button>
+    </div>
+  </nav>
+  <div class="dash-body">
+
+    <div class="dash-welcome">
+      <h1>שלום, <span id="dash-name" style="color:var(--yellow)">מאמן</span> 👋</h1>
+      <p>זה הפורטל האישי שלך — ניהול לוח זמנים, חשיפה ופרופיל</p>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dc-icon">📅</div>
+        <div class="dc-num" id="stat-slots">0</div>
+        <h3>שעות זמינות השבוע</h3>
+        <p>שעות שסימנת ללוח הזמנים שלך</p>
+      </div>
+      <div class="dash-card">
+        <div class="dc-icon">👥</div>
+        <div class="dc-num" id="stat-views">—</div>
+        <h3>צפיות בפרופיל</h3>
+        <p>כמה מתאמנים ראו אותך השבוע</p>
+      </div>
+      <div class="dash-card">
+        <div class="dc-icon">✅</div>
+        <div class="dc-num" id="stat-active" style="color:var(--red)">פעיל</div>
+        <h3>סטטוס חשבון</h3>
+        <p>המנוי שלך פעיל ועמוד המועדון מוצג</p>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="dash-section-title">לוח זמינות שבועי</div>
+    <div class="schedule-box">
+      <h3>הגדר שעות זמינות 📆</h3>
+      <p>בחר ימים ושעות שבהם אתה זמין לאימונים פרטיים — זה יופיע למתאמנים באתר.</p>
+      <div class="schedule-days" id="sched-days"></div>
+      <div class="slots-grid" id="sched-slots"></div>
+      <button class="save-schedule-btn" onclick="saveSchedule()">שמור לוח זמנים ✓</button>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="dash-section-title" style="margin-top:2rem">פרופיל מאמן</div>
+    <div class="profile-box">
+      <h3>הפרטים שיופיעו באתר</h3>
+      <div class="profile-form">
+        <div class="pf-group">
+          <label>שם מלא</label>
+          <input type="text" id="pf-name" placeholder="ישראל ישראלי" />
+        </div>
+        <div class="pf-group">
+          <label>עיר / מועדון</label>
+          <input type="text" id="pf-city" placeholder="תל אביב" />
+        </div>
+        <div class="pf-group">
+          <label>התמחות</label>
+          <input type="text" id="pf-spec" placeholder="אלוף ישראל · 10+ שנות ניסיון" />
+        </div>
+        <div class="pf-group">
+          <label>טלפון</label>
+          <input type="tel" id="pf-phone" placeholder="050-0000000" />
+        </div>
+      </div>
+      <button class="profile-save" onclick="saveProfile()">עדכן פרופיל</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FIREBASE SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+         sendPasswordResetEmail, signOut, onAuthStateChanged }
+  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc }
+  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+// ===== FIREBASE CONFIG — מלא כאן את הפרטים מ-Firebase Console =====
+const firebaseConfig = {
+  apiKey:            "PASTE_YOUR_API_KEY",
+  authDomain:        "PASTE_YOUR_AUTH_DOMAIN",
+  projectId:         "PASTE_YOUR_PROJECT_ID",
+  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET",
+  messagingSenderId: "PASTE_YOUR_SENDER_ID",
+  appId:             "PASTE_YOUR_APP_ID"
+};
+// ====================================================================
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+const DAYS  = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const SLOTS = ['06:00','07:00','08:00','09:00','10:00','11:00','12:00',
+               '13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'];
+let currentUser = null;
+let schedData   = {};
+let profileData = {};
+let activeDays  = new Set();
+
+// ---- AUTH STATE ----
+onAuthStateChanged(auth, async user => {
+  if (!user) { showScreen('auth'); return; }
+  currentUser = user;
+  const snap = await getDoc(doc(db, 'trainers', user.uid));
+  if (!snap.exists()) {
+    // New user — create record, mark pending
+    await setDoc(doc(db, 'trainers', user.uid), {
+      email: user.email, approved: false, createdAt: Date.now()
+    });
+    showScreen('pending');
+    return;
+  }
+  const data = snap.data();
+  if (!data.approved) { showScreen('pending'); return; }
+  // Approved — load dashboard
+  schedData   = data.schedule || {};
+  profileData = data.profile  || {};
+  loadDashboard(user, data);
+  showScreen('dashboard');
+});
+
+function showScreen(name) {
+  document.getElementById('auth-screen').style.display    = name === 'auth'      ? 'flex' : 'none';
+  document.getElementById('pending-screen').style.display = name === 'pending'   ? 'flex' : 'none';
+  document.getElementById('dashboard').style.display      = name === 'dashboard' ? 'flex' : 'none';
+}
+
+// ---- LOGIN ----
+window.doLogin = async function() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  const btn   = document.getElementById('btn-login');
+  const err   = document.getElementById('login-err');
+  err.textContent = '';
+  if (!email || !pass) { err.textContent = 'מלא מייל וסיסמה'; return; }
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    err.textContent = e.code === 'auth/invalid-credential'
+      ? 'מייל או סיסמה שגויים' : 'שגיאה — נסה שוב';
+    btn.disabled = false; btn.textContent = 'כניסה לפורטל ←';
+  }
+};
+
+// ---- REGISTER ----
+window.doRegister = async function() {
+  const email = document.getElementById('reg-email').value.trim();
+  const pass  = document.getElementById('reg-pass').value;
+  const pass2 = document.getElementById('reg-pass2').value;
+  const btn   = document.getElementById('btn-register');
+  const err   = document.getElementById('register-err');
+  err.textContent = '';
+  if (!email || !pass) { err.textContent = 'מלא מייל וסיסמה'; return; }
+  if (pass !== pass2)  { err.textContent = 'הסיסמאות אינן תואמות'; return; }
+  if (pass.length < 6) { err.textContent = 'סיסמה חייבת להכיל לפחות 6 תווים'; return; }
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    await createUserWithEmailAndPassword(auth, email, pass);
+    // onAuthStateChanged handles the rest — will set pending
+  } catch(e) {
+    const msgs = {
+      'auth/email-already-in-use': 'מייל זה כבר רשום — נסה להתחבר',
+      'auth/invalid-email':        'כתובת מייל לא תקינה',
+      'auth/weak-password':        'הסיסמה חלשה מדי'
+    };
+    err.textContent = msgs[e.code] || 'שגיאה — נסה שוב';
+    btn.disabled = false; btn.textContent = 'צור חשבון';
+  }
+};
+
+// ---- RESET PASSWORD ----
+window.doReset = async function() {
+  const email = document.getElementById('login-email').value.trim();
+  if (!email) { document.getElementById('login-err').textContent = 'הזן מייל תחילה'; return; }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    document.getElementById('login-err').style.color = 'var(--yellow)';
+    document.getElementById('login-err').textContent = '✓ מייל איפוס נשלח — בדוק תיבת הדואר';
+  } catch(e) {
+    document.getElementById('login-err').textContent = 'לא נמצא מייל זה במערכת';
+  }
+};
+
+// ---- LOGOUT ----
+window.doLogout = async function() { await signOut(auth); };
+
+// ---- DASHBOARD ----
+function loadDashboard(user, data) {
+  document.getElementById('dash-email-label').textContent = user.email;
+  const name = data.profile?.name || user.email.split('@')[0];
+  document.getElementById('dash-name').textContent = name;
+
+  // Profile fields
+  if (data.profile) {
+    document.getElementById('pf-name').value  = data.profile.name  || '';
+    document.getElementById('pf-city').value  = data.profile.city  || '';
+    document.getElementById('pf-spec').value  = data.profile.spec  || '';
+    document.getElementById('pf-phone').value = data.profile.phone || '';
+  }
+
+  buildScheduleUI();
+}
+
+function buildScheduleUI() {
+  // Days
+  const daysCont = document.getElementById('sched-days');
+  daysCont.innerHTML = '';
+  activeDays = new Set(Object.keys(schedData));
+  DAYS.forEach((d, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'day-btn' + (activeDays.has(String(i)) ? ' on' : '');
+    btn.textContent = d;
+    btn.onclick = () => {
+      if (activeDays.has(String(i))) activeDays.delete(String(i));
+      else activeDays.add(String(i));
+      btn.classList.toggle('on');
+      buildSlotUI();
+    };
+    daysCont.appendChild(btn);
+  });
+  buildSlotUI();
+}
+
+function buildSlotUI() {
+  const slotsCont = document.getElementById('sched-slots');
+  slotsCont.innerHTML = '';
+  if (activeDays.size === 0) {
+    slotsCont.innerHTML = '<p style="color:rgba(255,255,255,.3);font-size:.8rem;grid-column:1/-1">בחר ימים תחילה</p>';
+    return;
+  }
+  SLOTS.forEach(slot => {
+    // slot is "on" if ANY of the active days has it
+    const on = [...activeDays].some(d => schedData[d]?.[slot]);
+    const btn = document.createElement('button');
+    btn.className = 'slot-btn' + (on ? ' on' : '');
+    btn.textContent = slot;
+    btn.onclick = () => {
+      const nowOn = btn.classList.toggle('on');
+      activeDays.forEach(d => {
+        if (!schedData[d]) schedData[d] = {};
+        if (nowOn) schedData[d][slot] = true;
+        else delete schedData[d][slot];
+      });
+    };
+    slotsCont.appendChild(btn);
+  });
+}
+
+window.saveSchedule = async function() {
+  if (!currentUser) return;
+  await updateDoc(doc(db, 'trainers', currentUser.uid), { schedule: schedData });
+  // update stat
+  const total = Object.values(schedData).reduce((s, d) => s + Object.keys(d).length, 0);
+  document.getElementById('stat-slots').textContent = total;
+  showToast('✓ לוח הזמנים נשמר!');
+};
+
+window.saveProfile = async function() {
+  if (!currentUser) return;
+  const profile = {
+    name:  document.getElementById('pf-name').value.trim(),
+    city:  document.getElementById('pf-city').value.trim(),
+    spec:  document.getElementById('pf-spec').value.trim(),
+    phone: document.getElementById('pf-phone').value.trim()
+  };
+  await updateDoc(doc(db, 'trainers', currentUser.uid), { profile });
+  document.getElementById('dash-name').textContent = profile.name || currentUser.email.split('@')[0];
+  showToast('✓ הפרופיל עודכן!');
+};
+
+// ---- UI HELPERS ----
+window.switchTab = function(tab) {
+  document.getElementById('form-login').style.display    = tab === 'login'    ? '' : 'none';
+  document.getElementById('form-register').style.display = tab === 'register' ? '' : 'none';
+  document.querySelectorAll('.auth-tab').forEach((b, i) =>
+    b.classList.toggle('active', (i === 0) === (tab === 'login')));
+};
+
+window.togglePass = function(id, btn) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+};
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
