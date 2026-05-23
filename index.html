@@ -222,6 +222,18 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 .upcoming-vs{color:var(--red);font-weight:700;margin:0 .3rem}
 .upcoming-detail{font-size:.75rem;color:rgba(255,255,255,.38);font-weight:300}
 
+/* ---- LANG SWITCHER ---- */
+.lang-switcher{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.07);border-radius:4px;padding:2px;margin-inline-start:.6rem;flex-shrink:0}
+.lang-btn{background:none;border:none;color:rgba(255,255,255,.5);font-family:inherit;font-size:.7rem;font-weight:700;padding:.26rem .5rem;border-radius:3px;cursor:pointer;transition:background .15s,color .15s;line-height:1}
+.lang-btn:hover{color:var(--white);background:rgba(255,255,255,.1)}
+.lang-btn.active{background:var(--red);color:var(--white)}
+/* ---- DETECT BAR ---- */
+#lang-detect-bar{position:fixed;bottom:0;right:0;left:0;background:var(--dark2);border-top:2px solid var(--yellow);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem;z-index:500;flex-wrap:wrap;justify-content:center;transform:translateY(100%);transition:transform .35s ease}
+#lang-detect-bar.show{transform:translateY(0)}
+#lang-detect-msg{font-size:.85rem;color:rgba(255,255,255,.8);flex:1;min-width:200px}
+.detect-btn{padding:.38rem .9rem;border-radius:3px;font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;border:none;transition:background .2s}
+.detect-yes{background:var(--yellow);color:var(--black)}
+.detect-no{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
 /* ---- REVEAL ---- */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -237,38 +249,50 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 </head>
 <body>
 
+<!-- DETECT BAR -->
+<div id="lang-detect-bar">
+  <span id="lang-detect-msg"></span>
+  <button class="detect-btn detect-yes" onclick="acceptDetectedLang()">✓ כן</button>
+  <button class="detect-btn detect-no" onclick="dismissLangBar()">✕</button>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
     Box<span>IL</span>
-    <small>פלטפורמת האיגרוף הישראלית</small>
+    <small data-i18n="nav_sub">פלטפורמת האיגרוף הישראלית</small>
   </div>
   <ul class="nav-links">
-    <li><a href="#about">מהו איגרוף</a></li>
-    <li><a href="#youth">נוער</a></li>
-    <li><a href="#how">איך זה עובד</a></li>
-    <li><a href="#trainers">מאמנים</a></li>
-    <li><a href="#clubs">מועדונים</a></li>
-    <li><a href="#blog">🥊 בלוג</a></li>
-    <li><a href="#pricing">מחירים</a></li>
-    <li><a href="afula.html" target="_blank">דוגמה למועדון</a></li>
-    <li><a href="trainer-portal.html" class="nav-cta" style="background:var(--gray)!important;border:1px solid rgba(255,255,255,.15)!important">🔐 מאמנים</a></li>
-    <li><a href="#cta" class="nav-cta">הצטרפות</a></li>
+    <li><a href="#about" data-i18n="nav_about">מהו איגרוף</a></li>
+    <li><a href="#youth" data-i18n="nav_youth">נוער</a></li>
+    <li><a href="#how" data-i18n="nav_how">איך זה עובד</a></li>
+    <li><a href="#trainers" data-i18n="nav_trainers">מאמנים</a></li>
+    <li><a href="#clubs" data-i18n="nav_clubs">מועדונים</a></li>
+    <li><a href="#blog" data-i18n="nav_blog">🥊 בלוג</a></li>
+    <li><a href="#pricing" data-i18n="nav_pricing">מחירים</a></li>
+    <li><a href="afula.html" target="_blank" data-i18n="nav_example">דוגמה למועדון</a></li>
+    <li><a href="trainer-portal.html" class="nav-cta" style="background:var(--gray)!important;border:1px solid rgba(255,255,255,.15)!important" data-i18n="nav_login">🔐 מאמנים</a></li>
+    <li><a href="#cta" class="nav-cta" data-i18n="nav_join">הצטרפות</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('he')">עב</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    <button class="lang-btn" onclick="setLang('ar')">ع</button>
+  </div>
   <button class="hamburger" id="hamburger" onclick="toggleMobile()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#about" onclick="closeMobile()">מהו איגרוף</a>
-  <a href="#youth" onclick="closeMobile()">נוער וקהילה</a>
-  <a href="#how" onclick="closeMobile()">איך זה עובד</a>
-  <a href="#trainers" onclick="closeMobile()">מאמנים</a>
-  <a href="#clubs" onclick="closeMobile()">מועדונים</a>
-  <a href="#pricing" onclick="closeMobile()">מחירים</a>
-  <a href="afula.html" target="_blank" onclick="closeMobile()">דוגמה למועדון</a>
-  <a href="trainer-portal.html">🔐 כניסת מאמנים</a>
-  <a href="#cta" onclick="closeMobile()">הצטרפות</a>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav_about">מהו איגרוף</a>
+  <a href="#youth" onclick="closeMobile()" data-i18n="nav_youth">נוער וקהילה</a>
+  <a href="#how" onclick="closeMobile()" data-i18n="nav_how">איך זה עובד</a>
+  <a href="#trainers" onclick="closeMobile()" data-i18n="nav_trainers">מאמנים</a>
+  <a href="#clubs" onclick="closeMobile()" data-i18n="nav_clubs">מועדונים</a>
+  <a href="#pricing" onclick="closeMobile()" data-i18n="nav_pricing">מחירים</a>
+  <a href="afula.html" target="_blank" onclick="closeMobile()" data-i18n="nav_example">דוגמה למועדון</a>
+  <a href="trainer-portal.html" data-i18n="nav_login">🔐 מאמנים</a>
+  <a href="#cta" onclick="closeMobile()" data-i18n="nav_join">הצטרפות</a>
 </div>
 
 <!-- HERO -->
@@ -276,33 +300,27 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-tag">🥊 BoxIL — פלטפורמת האיגרוף הישראלית</div>
-    <h1>
-      אחד <span class="red">ספורט.</span><br>
-      כל <span class="yellow">ישראל.</span>
-    </h1>
-    <p class="hero-desc">
-      BoxIL מחברת בין מועדוני איגרוף, מאמנים ומתאמנים מכל הארץ —
-      תחת פלטפורמה אחת שמקדמת את האיגרוף הקלאסי ומגדילה את הקהילה בישראל.
-    </p>
+    <div class="hero-tag" data-i18n="hero_tag">🥊 BoxIL — פלטפורמת האיגרוף הישראלית</div>
+    <h1 data-i18n-html="hero_h1">אחד <span class="red">ספורט.</span><br>כל <span class="yellow">ישראל.</span></h1>
+    <p class="hero-desc" data-i18n="hero_desc">BoxIL מחברת בין מועדוני איגרוף, מאמנים ומתאמנים מכל הארץ — תחת פלטפורמה אחת שמקדמת את האיגרוף הקלאסי ומגדילה את הקהילה בישראל.</p>
     <div class="hero-btns">
-      <a href="#how" class="btn-primary">🥊 כיצד זה עובד</a>
-      <a href="#pricing" class="btn-outline">מחירים למועדונים</a>
+      <a href="#how" class="btn-primary" data-i18n="hero_btn1">🥊 כיצד זה עובד</a>
+      <a href="#pricing" class="btn-outline" data-i18n="hero_btn2">מחירים למועדונים</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
         <strong>+50</strong>
-        <span>מועדונים בישראל</span>
+        <span data-i18n="stat1_lbl">מועדונים בישראל</span>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
         <strong>+3,000</strong>
-        <span>מתאמנים פעילים</span>
+        <span data-i18n="stat2_lbl">מתאמנים פעילים</span>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <strong>כל גיל</strong>
-        <span>6 עד 60+</span>
+        <strong data-i18n="stat3_str">כל גיל</strong>
+        <span data-i18n="stat3_lbl">6 עד 60+</span>
       </div>
     </div>
   </div>
@@ -334,9 +352,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- ABOUT BOXING -->
 <section class="about-sect reveal" id="about">
   <div class="sec-inner">
-    <div class="sec-label">מהו איגרוף קלאסי</div>
-    <h2 class="sec-h">ספורט שמחנך, לא רק מאמן</h2>
-    <p class="sec-sub">איגרוף קלאסי הוא אחד מהספורטים העתיקים והמכובדים בעולם — שמפתח גוף, מוח ואופי בו זמנית.</p>
+    <div class="sec-label" data-i18n="about_lbl">מהו איגרוף קלאסי</div>
+    <h2 class="sec-h" data-i18n="about_h">ספורט שמחנך, לא רק מאמן</h2>
+    <p class="sec-sub" data-i18n="about_sub">איגרוף קלאסי הוא אחד מהספורטים העתיקים והמכובדים בעולם — שמפתח גוף, מוח ואופי בו זמנית.</p>
 
     <div class="about-grid">
       <div class="about-text">
@@ -412,9 +430,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- YOUTH & COMMUNITY -->
 <section class="youth-sect reveal" id="youth">
   <div class="sec-inner">
-    <div class="sec-label">נוער וקהילה</div>
-    <h2 class="sec-h">איגרוף מקדם את הנוער הישראלי</h2>
-    <p class="sec-sub">מכל המגזרים, מכל הרקעים — הזירה שוויונית לכולם.</p>
+    <div class="sec-label" data-i18n="youth_lbl">נוער וקהילה</div>
+    <h2 class="sec-h" data-i18n="youth_h">איגרוף מקדם את הנוער הישראלי</h2>
+    <p class="sec-sub" data-i18n="youth_sub">מכל המגזרים, מכל הרקעים — הזירה שוויונית לכולם.</p>
 
     <div class="youth-band">
       <div>
@@ -466,9 +484,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- HOW IT WORKS -->
 <section class="how-sect reveal" id="how">
   <div class="sec-inner">
-    <div class="sec-label">למועדונים</div>
-    <h2 class="sec-h">איך BoxIL עובדת?</h2>
-    <p class="sec-sub">שלושה שלבים פשוטים — ממועדון מקומי לנוכחות דיגיטלית מלאה.</p>
+    <div class="sec-label" data-i18n="how_lbl">למועדונים</div>
+    <h2 class="sec-h" data-i18n="how_h">איך BoxIL עובדת?</h2>
+    <p class="sec-sub" data-i18n="how_sub">שלושה שלבים פשוטים — ממועדון מקומי לנוכחות דיגיטלית מלאה.</p>
 
     <div class="steps">
       <div class="step reveal">
@@ -524,9 +542,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- FOR TRAINERS -->
 <section class="trainers-sect reveal" id="trainers">
   <div class="sec-inner">
-    <div class="sec-label">מאמנים</div>
-    <h2 class="sec-h">הפלטפורמה שהמאמן הישראלי מחכה לה</h2>
-    <p class="sec-sub">BoxIL בונה קהילת מאמנים — לא רק מאגר. חיבור, שיתוף ידע ומפגשים מקצועיים.</p>
+    <div class="sec-label" data-i18n="tr_lbl">מאמנים</div>
+    <h2 class="sec-h" data-i18n="tr_h">הפלטפורמה שהמאמן הישראלי מחכה לה</h2>
+    <p class="sec-sub" data-i18n="tr_sub">BoxIL בונה קהילת מאמנים — לא רק מאגר. חיבור, שיתוף ידע ומפגשים מקצועיים.</p>
 
     <div class="trainer-cards">
       <div class="trainer-card reveal">
@@ -560,9 +578,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- CLUBS MAP -->
 <section class="clubs-sect reveal" id="clubs">
   <div class="sec-inner">
-    <div class="sec-label">מועדונים רשומים</div>
-    <h2 class="sec-h">המועדונים שכבר איתנו 🥊</h2>
-    <p class="sec-sub">אלה המועדונים שבחרו להוביל את האיגרוף הישראלי קדימה.</p>
+    <div class="sec-label" data-i18n="clubs_lbl">מועדונים רשומים</div>
+    <h2 class="sec-h" data-i18n="clubs_h">המועדונים שכבר איתנו 🥊</h2>
+    <p class="sec-sub" data-i18n="clubs_sub">אלה המועדונים שבחרו להוביל את האיגרוף הישראלי קדימה.</p>
 
     <div class="clubs-grid">
 
@@ -608,9 +626,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- PRICING -->
 <section class="pricing-sect reveal" id="pricing">
   <div class="sec-inner">
-    <div class="sec-label">מסלולים</div>
-    <h2 class="sec-h">מחירים שכולם יכולים</h2>
-    <p class="sec-sub">השקעה חודשית קטנה — נוכחות דיגיטלית מלאה.</p>
+    <div class="sec-label" data-i18n="price_lbl">מסלולים</div>
+    <h2 class="sec-h" data-i18n="price_h">מחירים שכולם יכולים</h2>
+    <p class="sec-sub" data-i18n="price_sub">השקעה חודשית קטנה — נוכחות דיגיטלית מלאה.</p>
 
     <div class="pricing-grid" style="margin-top:3rem">
 
@@ -741,9 +759,9 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 
 <!-- CTA BAND -->
 <div class="cta-band reveal" id="cta">
-  <h2>מועדון האיגרוף שלך מגיע ליותר</h2>
-  <p>הצטרף ל-BoxIL ותן לנו לעבוד בשבילך — כל חודש, כל יום.</p>
-  <a href="https://wa.me/9720548274422?text=היי%20BoxIL%20🥊%0Aאני%20מעוניין%20להצטרף%20לפלטפורמה%20עם%20המועדון%20שלי.%0Aאשמח%20לשמוע%20פרטים!" target="_blank" rel="noopener noreferrer" class="btn-primary">
+  <h2 data-i18n="cta_h">מועדון האיגרוף שלך מגיע ליותר</h2>
+  <p data-i18n="cta_p">הצטרף ל-BoxIL ותן לנו לעבוד בשבילך — כל חודש, כל יום.</p>
+  <a href="https://wa.me/9720548274422?text=היי%20BoxIL%20🥊%0Aאני%20מעוניין%20להצטרף%20לפלטפורמה%20עם%20המועדון%20שלי.%0Aאשמח%20לשמוע%20פרטים!" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="cta_btn">
     📲 דברו איתנו בוואטסאפ
   </a>
 </div>
@@ -768,6 +786,190 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ---- LANGUAGE SWITCHER ---- */
+const langs = {
+  he: {
+    dir:'rtl',
+    nav_sub:'פלטפורמת האיגרוף הישראלית',
+    nav_about:'מהו איגרוף',
+    nav_youth:'נוער',
+    nav_how:'איך זה עובד',
+    nav_trainers:'מאמנים',
+    nav_clubs:'מועדונים',
+    nav_blog:'🥊 בלוג',
+    nav_pricing:'מחירים',
+    nav_example:'דוגמה למועדון',
+    nav_login:'🔐 מאמנים',
+    nav_join:'הצטרפות',
+    hero_tag:'🥊 BoxIL — פלטפורמת האיגרוף הישראלית',
+    hero_h1:'אחד <span class="red">ספורט.</span><br>כל <span class="yellow">ישראל.</span>',
+    hero_desc:'BoxIL מחברת בין מועדוני איגרוף, מאמנים ומתאמנים מכל הארץ — תחת פלטפורמה אחת שמקדמת את האיגרוף הקלאסי ומגדילה את הקהילה בישראל.',
+    hero_btn1:'🥊 כיצד זה עובד',
+    hero_btn2:'מחירים למועדונים',
+    stat1_lbl:'מועדונים בישראל',
+    stat2_lbl:'מתאמנים פעילים',
+    stat3_str:'כל גיל',
+    stat3_lbl:'6 עד 60+',
+    about_lbl:'מהו איגרוף קלאסי',
+    about_h:'ספורט שמחנך, לא רק מאמן',
+    about_sub:'איגרוף קלאסי הוא אחד מהספורטים העתיקים והמכובדים בעולם — שמפתח גוף, מוח ואופי בו זמנית.',
+    youth_lbl:'נוער וקהילה',
+    youth_h:'איגרוף מקדם את הנוער הישראלי',
+    youth_sub:'מכל המגזרים, מכל הרקעים — הזירה שוויונית לכולם.',
+    how_lbl:'למועדונים',
+    how_h:'איך BoxIL עובדת?',
+    how_sub:'שלושה שלבים פשוטים — ממועדון מקומי לנוכחות דיגיטלית מלאה.',
+    tr_lbl:'מאמנים',
+    tr_h:'הפלטפורמה שהמאמן הישראלי מחכה לה',
+    tr_sub:'BoxIL בונה קהילת מאמנים — לא רק מאגר.',
+    clubs_lbl:'מועדונים רשומים',
+    clubs_h:'המועדונים שכבר איתנו 🥊',
+    clubs_sub:'אלה המועדונים שבחרו להוביל את האיגרוף הישראלי קדימה.',
+    price_lbl:'מסלולים',
+    price_h:'מחירים שכולם יכולים',
+    price_sub:'השקעה חודשית קטנה — נוכחות דיגיטלית מלאה.',
+    cta_h:'מועדון האיגרוף שלך מגיע ליותר',
+    cta_p:'הצטרף ל-BoxIL ותן לנו לעבוד בשבילך — כל חודש, כל יום.',
+    cta_btn:'📲 דברו איתנו בוואטסאפ'
+  },
+  ru: {
+    dir:'ltr',
+    nav_sub:'Израильская боксёрская платформа',
+    nav_about:'О боксе',
+    nav_youth:'Молодёжь',
+    nav_how:'Как это работает',
+    nav_trainers:'Тренеры',
+    nav_clubs:'Клубы',
+    nav_blog:'🥊 Блог',
+    nav_pricing:'Цены',
+    nav_example:'Пример клуба',
+    nav_login:'🔐 Тренерам',
+    nav_join:'Присоединиться',
+    hero_tag:'🥊 BoxIL — Израильская боксёрская платформа',
+    hero_h1:'Один <span class="red">спорт.</span><br>Весь <span class="yellow">Израиль.</span>',
+    hero_desc:'BoxIL объединяет боксёрские клубы, тренеров и спортсменов со всей страны — на одной платформе, которая продвигает классический бокс и развивает сообщество в Израиле.',
+    hero_btn1:'🥊 Как это работает',
+    hero_btn2:'Цены для клубов',
+    stat1_lbl:'Клубов в Израиле',
+    stat2_lbl:'Активных спортсменов',
+    stat3_str:'Любой возраст',
+    stat3_lbl:'от 6 до 60+',
+    about_lbl:'Классический бокс',
+    about_h:'Спорт, который воспитывает — не только тренирует',
+    about_sub:'Классический бокс — один из древнейших и уважаемых видов спорта в мире, развивающий тело, разум и характер одновременно.',
+    youth_lbl:'Молодёжь и сообщество',
+    youth_h:'Бокс продвигает израильскую молодёжь',
+    youth_sub:'Из всех секторов, с любым фоном — ринг равен для всех.',
+    how_lbl:'Для клубов',
+    how_h:'Как работает BoxIL?',
+    how_sub:'Три простых шага — от местного клуба к полному цифровому присутствию.',
+    tr_lbl:'Тренеры',
+    tr_h:'Платформа, которую ждёт израильский тренер',
+    tr_sub:'BoxIL строит сообщество тренеров — не просто базу данных.',
+    clubs_lbl:'Зарегистрированные клубы',
+    clubs_h:'Клубы, которые уже с нами 🥊',
+    clubs_sub:'Клубы, которые выбрали вести израильский бокс вперёд.',
+    price_lbl:'Тарифы',
+    price_h:'Цены для всех',
+    price_sub:'Небольшие ежемесячные инвестиции — полное цифровое присутствие.',
+    cta_h:'Ваш боксёрский клуб заслуживает большего',
+    cta_p:'Присоединяйтесь к BoxIL — мы работаем на вас каждый месяц, каждый день.',
+    cta_btn:'📲 Написать нам в WhatsApp'
+  },
+  ar: {
+    dir:'rtl',
+    nav_sub:'منصة الملاكمة الإسرائيلية',
+    nav_about:'ما هي الملاكمة',
+    nav_youth:'الشباب',
+    nav_how:'كيف يعمل',
+    nav_trainers:'المدربون',
+    nav_clubs:'الأندية',
+    nav_blog:'🥊 مدونة',
+    nav_pricing:'الأسعار',
+    nav_example:'مثال لنادٍ',
+    nav_login:'🔐 للمدربين',
+    nav_join:'انضم إلينا',
+    hero_tag:'🥊 BoxIL — منصة الملاكمة الإسرائيلية',
+    hero_h1:'رياضة <span class="red">واحدة.</span><br>كل <span class="yellow">إسرائيل.</span>',
+    hero_desc:'BoxIL تربط بين أندية الملاكمة والمدربين والرياضيين من جميع أنحاء البلاد — تحت منصة واحدة تعزز الملاكمة الكلاسيكية وتنمّي المجتمع في إسرائيل.',
+    hero_btn1:'🥊 كيف يعمل',
+    hero_btn2:'أسعار الأندية',
+    stat1_lbl:'أندية في إسرائيل',
+    stat2_lbl:'رياضيون نشطون',
+    stat3_str:'كل الأعمار',
+    stat3_lbl:'من 6 حتى 60+',
+    about_lbl:'الملاكمة الكلاسيكية',
+    about_h:'رياضة تُربّي، لا تُدرّب فقط',
+    about_sub:'الملاكمة الكلاسيكية من أعرق الرياضات وأكثرها احتراماً في العالم — تُنمّي الجسد والعقل والشخصية في آنٍ واحد.',
+    youth_lbl:'الشباب والمجتمع',
+    youth_h:'الملاكمة تُعزّز شباب إسرائيل',
+    youth_sub:'من جميع الطوائف وجميع الخلفيات — الحلبة متساوية للجميع.',
+    how_lbl:'للأندية',
+    how_h:'كيف تعمل BoxIL؟',
+    how_sub:'ثلاث خطوات بسيطة — من النادي المحلي إلى حضور رقمي كامل.',
+    tr_lbl:'المدربون',
+    tr_h:'المنصة التي ينتظرها المدرب الإسرائيلي',
+    tr_sub:'BoxIL تبني مجتمع مدربين — ليس مجرد قاعدة بيانات.',
+    clubs_lbl:'الأندية المسجّلة',
+    clubs_h:'الأندية المنضمة إلينا 🥊',
+    clubs_sub:'الأندية التي اختارت قيادة الملاكمة الإسرائيلية نحو الأمام.',
+    price_lbl:'الخطط',
+    price_h:'أسعار في متناول الجميع',
+    price_sub:'استثمار شهري صغير — حضور رقمي كامل.',
+    cta_h:'ناديك يستحق أكثر',
+    cta_p:'انضم إلى BoxIL ودعنا نعمل من أجلك — كل شهر، كل يوم.',
+    cta_btn:'📲 تواصل معنا على واتساب'
+  }
+};
+
+let currentLang = 'he';
+let pendingDetectedLang = null;
+
+function setLang(code) {
+  if (!langs[code]) return;
+  currentLang = code;
+  const l = langs[code];
+  document.documentElement.lang = code;
+  document.documentElement.dir = l.dir;
+  document.body.style.direction = l.dir;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if (l[el.dataset.i18n] !== undefined) el.textContent = l[el.dataset.i18n];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    if (l[el.dataset.i18nHtml] !== undefined) el.innerHTML = l[el.dataset.i18nHtml];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const map = { he:'עב', ru:'RU', ar:'ع' };
+    btn.classList.toggle('active', btn.textContent.trim() === map[code]);
+  });
+  try { localStorage.setItem('boxil_lang', code); } catch(e) {}
+}
+
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('boxil_lang');
+  if (saved && langs[saved]) { setLang(saved); return; }
+  const detected = (navigator.language || 'he').split('-')[0];
+  if (detected !== 'he' && langs[detected]) {
+    pendingDetectedLang = detected;
+    const msgs = {
+      ru: 'Ваш браузер на русском — перевести сайт?',
+      ar: 'متصفحك بالعربية — هل تريد ترجمة الموقع؟'
+    };
+    document.getElementById('lang-detect-msg').textContent = msgs[detected] || '';
+    const bar = document.getElementById('lang-detect-bar');
+    if (bar) { bar.classList.add('show'); }
+  }
+});
+
+function acceptDetectedLang() {
+  if (pendingDetectedLang) setLang(pendingDetectedLang);
+  dismissLangBar();
+}
+function dismissLangBar() {
+  const bar = document.getElementById('lang-detect-bar');
+  if (bar) bar.classList.remove('show');
+}
 </script>
 </body>
 </html>
