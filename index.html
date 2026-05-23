@@ -166,7 +166,7 @@ section{padding:5rem 1.5rem}
 .fork-q{text-align:center;font-size:clamp(.85rem,2vw,1rem);font-weight:400;color:rgba(255,255,255,.35);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.7rem}
 .fork-title{text-align:center;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:900;margin-bottom:3rem;line-height:1.05}
 .fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:820px;width:100%;margin:0 auto}
-.fork-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:3.5rem 2rem;border-radius:8px;text-decoration:none;transition:transform .25s,box-shadow .25s;cursor:pointer}
+.fork-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem 1.5rem;border-radius:8px;text-decoration:none;transition:transform .25s,box-shadow .25s;cursor:pointer}
 .fork-card-trainee{background:linear-gradient(135deg,var(--red-dark) 0%,var(--red) 100%);color:var(--white)}
 .fork-card-trainer{background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);color:var(--white);border:1px solid rgba(245,197,24,.3)}
 .fork-card:hover{transform:translateY(-8px)}
@@ -321,31 +321,6 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
   <a href="#cta" onclick="closeMobile()" data-i18n="nav_join">הצטרפות</a>
 </div>
 
-<!-- FORK: TRAINEE vs TRAINER -->
-<section class="fork-sect" id="fork">
-  <p class="fork-q">ספר לנו מי אתה</p>
-  <h2 class="fork-title">מתאמן <span style="color:var(--red)">או</span> מאמן?</h2>
-  <div class="fork-grid">
-    <a href="trainee.html" class="fork-card fork-card-trainee">
-      <div class="fork-icon">🥊</div>
-      <div class="fork-label">מתאמן</div>
-      <div class="fork-desc">מצא את מועדון האיגרוף הקרוב אליך, קבל מידע על שעות ואמון</div>
-      <div class="fork-arrow">←</div>
-    </a>
-    <a href="trainer-plans.html" class="fork-card fork-card-trainer">
-      <div class="fork-icon">🏆</div>
-      <div class="fork-label">מאמן</div>
-      <div class="fork-desc">הצטרף לפלטפורמה, נהל את לוח האימונים שלך וגדל בקהילה</div>
-      <div class="fork-arrow">←</div>
-    </a>
-  </div>
-  <div class="fork-line">BoxIL — הפלטפורמה הלאומית לאיגרוף קלאסי</div>
-  <div class="fork-scroll" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
-    <span>גלול לעוד</span>
-    <div class="fork-scroll-arrow"></div>
-  </div>
-</section>
-
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
@@ -354,9 +329,20 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
     <div class="hero-tag" data-i18n="hero_tag">🥊 BoxIL — פלטפורמת האיגרוף הישראלית</div>
     <h1 data-i18n-html="hero_h1">אחד <span class="red">ספורט.</span><br>כל <span class="yellow">ישראל.</span></h1>
     <p class="hero-desc" data-i18n="hero_desc">BoxIL מחברת בין מועדוני איגרוף, מאמנים ומתאמנים מכל הארץ — תחת פלטפורמה אחת שמקדמת את האיגרוף הקלאסי ומגדילה את הקהילה בישראל.</p>
-    <div class="hero-btns">
-      <a href="#how" class="btn-primary" data-i18n="hero_btn1">🥊 כיצד זה עובד</a>
-      <a href="#pricing" class="btn-outline" data-i18n="hero_btn2">מחירים למועדונים</a>
+    <p class="fork-q" style="margin-bottom:.6rem">ספר לנו מי אתה</p>
+    <div class="fork-grid" style="margin-bottom:2.5rem">
+      <a href="trainee.html" class="fork-card fork-card-trainee">
+        <div class="fork-icon">🥊</div>
+        <div class="fork-label">מתאמן</div>
+        <div class="fork-desc">מצא את מועדון האיגרוף הקרוב אליך, קבל מידע על שעות ואמון</div>
+        <div class="fork-arrow">←</div>
+      </a>
+      <a href="trainer-plans.html" class="fork-card fork-card-trainer">
+        <div class="fork-icon">🏆</div>
+        <div class="fork-label">מאמן</div>
+        <div class="fork-desc">הצטרף לפלטפורמה, נהל את לוח האימונים שלך וגדל בקהילה</div>
+        <div class="fork-arrow">←</div>
+      </a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
