@@ -71,6 +71,39 @@ section{padding:5rem 1.5rem}
 .sec-h{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:.5rem}
 .sec-sub{color:rgba(255,255,255,.4);font-size:.9rem;font-weight:300;line-height:1.7;max-width:560px}
 
+/* ---- PHOTO STRIP ---- */
+.photo-strip{background:var(--black);padding:0;overflow:hidden}
+.strip-label{text-align:center;padding:3.5rem 1.5rem 2rem;background:var(--black)}
+.strip-label .sec-label{color:var(--yellow);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+.strip-label h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;margin-bottom:.5rem}
+.strip-label p{color:rgba(255,255,255,.42);font-size:.9rem;font-weight:300;max-width:540px;margin:0 auto}
+.strip-label .sport-badge{display:inline-block;background:linear-gradient(90deg,var(--red),#a01010);color:var(--white);font-size:.75rem;font-weight:900;padding:.3rem 1rem;border-radius:30px;margin-bottom:.8rem;letter-spacing:.06em}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:4px;margin-bottom:4px}
+.photo-grid .ph{overflow:hidden;position:relative;background:var(--gray)}
+.photo-grid .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease,filter .4s}
+.photo-grid .ph:hover img{transform:scale(1.06);filter:brightness(1.1)}
+.photo-grid .ph.tall{grid-row:span 2}
+.photo-grid .ph.wide{grid-column:span 2}
+.ph-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);opacity:0;transition:opacity .3s}
+.photo-grid .ph:hover .ph-overlay{opacity:1}
+.ph-label{position:absolute;bottom:.8rem;right:1rem;left:1rem;font-size:.75rem;font-weight:700;color:var(--white);opacity:0;transition:opacity .3s;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.photo-grid .ph:hover .ph-label{opacity:1}
+@media(max-width:600px){.photo-grid{grid-template-columns:repeat(2,1fr)}.photo-grid .ph.wide{grid-column:span 2}}
+
+/* ---- LEGENDS ---- */
+.legends-sect{background:var(--dark);padding:5rem 1.5rem}
+.legends-inner{max-width:1100px;margin:0 auto}
+.legends-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+@media(max-width:900px){.legends-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.legends-grid{grid-template-columns:repeat(2,1fr)}}
+.legend-card{position:relative;border-radius:5px;overflow:hidden;aspect-ratio:3/4;background:var(--dark2);cursor:default}
+.legend-card img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .4s,transform .5s}
+.legend-card:hover img{filter:grayscale(0%);transform:scale(1.05)}
+.legend-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,transparent 100%)}
+.legend-info{position:absolute;bottom:0;right:0;left:0;padding:1rem}
+.legend-name{font-size:.95rem;font-weight:900;margin-bottom:.2rem}
+.legend-titles{font-size:.7rem;color:var(--yellow);font-weight:700;line-height:1.4}
+
 /* ---- ABOUT BOXING ---- */
 .about-sect{background:var(--dark)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
@@ -197,6 +230,7 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
     <small>פלטפורמת האיגרוף הישראלית</small>
   </div>
   <ul class="nav-links">
+    <li><a href="#legends">אגדות</a></li>
     <li><a href="#about">מהו איגרוף</a></li>
     <li><a href="#youth">נוער</a></li>
     <li><a href="#how">איך זה עובד</a></li>
@@ -256,6 +290,124 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
         <strong>כל גיל</strong>
         <span>6 עד 60+</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP: YOUTH BOXING -->
+<div class="photo-strip">
+  <div class="strip-label reveal">
+    <div class="sport-badge">🥊 אחד מענפי הספורט הגדולים בעולם</div>
+    <div class="sec-label">איגרוף קלאסי</div>
+    <h2>ספורט שצובר תאוצה בישראל</h2>
+    <p>בשנים האחרונות האיגרוף הקלאסי הופך לאחד הענפים הצומחים ביותר בישראל — מאלפי ילדים ונוער שנכנסים לחדרי אימון ועד ספורטאים שמייצגים את ישראל בזירה הבינלאומית.</p>
+  </div>
+
+  <div class="photo-grid">
+    <div class="ph tall">
+      <img src="https://images.pexels.com/photos/4752840/pexels-photo-4752840.jpeg?auto=compress&cs=tinysrgb&w=800" alt="נער מתאגרף" loading="lazy" />
+      <div class="ph-overlay"></div>
+      <div class="ph-label">הדור הבא</div>
+    </div>
+    <div class="ph">
+      <img src="https://images.pexels.com/photos/6720436/pexels-photo-6720436.jpeg?auto=compress&cs=tinysrgb&w=800" alt="מאמן ונוער" loading="lazy" />
+      <div class="ph-overlay"></div>
+      <div class="ph-label">מאמן ותלמיד</div>
+    </div>
+    <div class="ph">
+      <img src="https://images.pexels.com/photos/5809795/pexels-photo-5809795.jpeg?auto=compress&cs=tinysrgb&w=800" alt="אגרוף" loading="lazy" />
+      <div class="ph-overlay"></div>
+      <div class="ph-label">ביטחון עצמי</div>
+    </div>
+    <div class="ph wide">
+      <img src="https://images.pexels.com/photos/6720457/pexels-photo-6720457.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="אימון איגרוף" loading="lazy" />
+      <div class="ph-overlay"></div>
+      <div class="ph-label">אימון ממוקד</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGENDS -->
+<section class="legends-sect reveal" id="legends">
+  <div class="legends-inner">
+    <div class="sec-label">אגדות האיגרוף</div>
+    <h2 class="sec-h">הגדולים מכל הזמנים</h2>
+    <p class="sec-sub">הלוחמים שהגדירו מחדש מה זה אפשרי — בתוך הזירה ומחוצה לה.</p>
+
+    <div class="legends-grid">
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Muhammad_Ali_NYWTS.jpg" alt="Muhammad Ali" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Muhammad Ali</div>
+          <div class="legend-titles">אלוף העולם · 56 ניצחונות · האגדה הגדולה</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Mike_Tyson_Portrait.jpg" alt="Mike Tyson" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Mike Tyson</div>
+          <div class="legend-titles">WBC · WBA · IBF · 50 ניצחונות · 44 KO</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Joe_Louis_1941.jpg" alt="Joe Louis" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Joe Louis</div>
+          <div class="legend-titles">אלוף העולם 12 שנה · 66 ניצחונות</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Rocky_Marciano_%28cropped%29.jpg" alt="Rocky Marciano" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Rocky Marciano</div>
+          <div class="legend-titles">49 קרבות · 49 ניצחונות · הבלתי מנוצח</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Floyd_Mayweather_Jr_2011.jpg" alt="Floyd Mayweather" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Floyd Mayweather Jr.</div>
+          <div class="legend-titles">50-0 · אלוף 5 קטגוריות · הטוב מכולם</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Manny_Pacquiao_Hearted_fist.JPG" alt="Manny Pacquiao" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Manny Pacquiao</div>
+          <div class="legend-titles">אלוף 8 קטגוריות · 62 ניצחונות</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/George_Foreman_%281973%29.jpg" alt="George Foreman" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">George Foreman</div>
+          <div class="legend-titles">אלוף עולם בגיל 45 · 76 ניצחונות</div>
+        </div>
+      </div>
+
+      <div class="legend-card reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Sugar_Ray_Leonard.jpg" alt="Sugar Ray Leonard" loading="lazy" />
+        <div class="legend-overlay"></div>
+        <div class="legend-info">
+          <div class="legend-name">Sugar Ray Leonard</div>
+          <div class="legend-titles">אלוף 5 קטגוריות · אגדת אולימפיאדה 76</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
