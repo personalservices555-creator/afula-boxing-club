@@ -320,6 +320,41 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 
 
 @media(max-width:600px){.bk-body{padding:1rem 1rem 3rem}.bk-bar{padding:.6rem 1rem}.bk-modal{padding:1.4rem}}
+
+/* BLOG */
+.blog-section{padding:5rem 1.5rem;background:var(--dark)}
+.blog-section .sec-label{color:var(--yellow);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6rem}
+.blog-section h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:.5rem}
+.blog-section .sec-sub{color:rgba(255,255,255,.4);font-size:.9rem;font-weight:300;margin-bottom:3rem}
+.blog-inner{max-width:1100px;margin:0 auto}
+
+.blog-cols{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start}
+@media(max-width:860px){.blog-cols{grid-template-columns:1fr}}
+
+/* Recent fight cards */
+.blog-recaps{display:flex;flex-direction:column;gap:1.5rem}
+.blog-card{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-right:3px solid var(--red);border-radius:3px;padding:1.4rem 1.6rem;transition:border-color .2s,transform .2s}
+.blog-card:hover{border-right-color:var(--yellow);transform:translateX(-3px)}
+.blog-card-meta{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem;flex-wrap:wrap}
+.blog-card-date{font-size:.72rem;color:rgba(255,255,255,.35);font-weight:300;letter-spacing:.04em}
+.blog-card-badge{font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:.2rem .55rem;border-radius:2px;text-transform:uppercase}
+.badge-ko{background:rgba(215,43,43,.2);color:var(--red);border:1px solid rgba(215,43,43,.35)}
+.badge-ud{background:rgba(245,197,24,.12);color:var(--yellow);border:1px solid rgba(245,197,24,.25)}
+.badge-sd{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12)}
+.blog-card h3{font-size:1.05rem;font-weight:900;margin-bottom:.45rem;line-height:1.3}
+.blog-card-result{font-size:.8rem;color:var(--yellow);font-weight:700;margin-bottom:.6rem}
+.blog-card p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.65;font-weight:300}
+
+/* Upcoming fights sidebar */
+.upcoming-box{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-top:3px solid var(--yellow);border-radius:3px;padding:1.4rem}
+.upcoming-box h3{font-size:1rem;font-weight:900;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.upcoming-list{display:flex;flex-direction:column;gap:0}
+.upcoming-item{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.upcoming-item:last-child{border-bottom:none;padding-bottom:0}
+.upcoming-date{display:inline-block;font-size:.68rem;font-weight:700;color:var(--black);background:var(--yellow);padding:.18rem .5rem;border-radius:2px;margin-bottom:.55rem;letter-spacing:.04em}
+.upcoming-fighters{font-size:.92rem;font-weight:900;margin-bottom:.25rem;line-height:1.3}
+.upcoming-vs{color:var(--red);font-weight:700;margin:0 .3rem}
+.upcoming-detail{font-size:.75rem;color:rgba(255,255,255,.38);font-weight:300}
 </style>
 </head>
 <body>
@@ -335,6 +370,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
     <li><a href="#trainers" data-i18n="nav_trainers">מאמנים</a></li>
     <li><a href="#private" data-i18n="nav_private">אימון פרטי</a></li>
     <li><a href="#groups" data-i18n="nav_groups">קבוצות</a></li>
+    <li><a href="#blog">🥊 בלוג</a></li>
     <li><a href="https://wa.me/9720548274422" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav_cta">📲 צור קשר</a></li>
   </ul>
   <div class="lang-switcher">
@@ -358,6 +394,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
   <a href="#trainers" onclick="closeMobile()" data-i18n="nav_trainers">מאמנים</a>
   <a href="#private" onclick="closeMobile()" data-i18n="nav_private">אימון פרטי</a>
   <a href="#groups" onclick="closeMobile()" data-i18n="nav_groups">קבוצות</a>
+  <a href="#blog" onclick="closeMobile()">🥊 בלוג</a>
   <a href="https://wa.me/9720548274422" target="_blank" rel="noopener noreferrer" onclick="closeMobile()" data-i18n="mobile_contact">🥊 צור קשר בוואטסאפ</a>
 </div>
 
@@ -619,6 +656,112 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
         <div class="group-age" data-i18n="adults_age">גיל 18+</div>
         <div class="group-desc" data-i18n="adults_desc">בין אם אתה רוצה להתחרות ובין אם פשוט לשחרר ולהתחזק — יש כאן מקום בשבילך.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section reveal" id="blog">
+  <div class="blog-inner">
+    <div class="sec-label">עולם האיגרוף</div>
+    <h2>בלוג קרבות 🥊</h2>
+    <p class="sec-sub">סקירת הקרבות הגדולים ביותר — ישירות מהזירה העולמית</p>
+
+    <div class="blog-cols">
+
+      <!-- RECENT FIGHTS -->
+      <div class="blog-recaps">
+
+        <div class="blog-card reveal">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">3 במאי 2026 · טוקיו דום, יפן</span>
+            <span class="blog-card-badge badge-ud">UD · ניצחון אחיד</span>
+          </div>
+          <h3>נאויה אינואה נגד ג'ונטו נקטאני — אליפות עולם משולבת WBC / WBA / IBF / WBO</h3>
+          <div class="blog-card-result">🏆 ניצחון לאינואה · 116-112, 116-112, 115-113</div>
+          <p>
+            בפני 55,000 צופים — השיא ההיסטורי לאיגרוף יפני — שמר "המפלצת" אינואה (33-0) על כתרו המשולב
+            בסופר בנטמוויט. נקטאני, שהגיע עם 24 נוקאאוטים, אתגר קשה בסבבים האחרונים, אך אינואה הצליח
+            לשרוד ולהכריע בנקודות.
+          </p>
+        </div>
+
+        <div class="blog-card reveal">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">11 באפריל 2026 · טוטנהאם הוטספור סטיידיום, לונדון</span>
+            <span class="blog-card-badge badge-ud">UD · ניצחון אחיד</span>
+          </div>
+          <h3>טייסון פיורי נגד ארסלאנבק מחמודוב</h3>
+          <div class="blog-card-result">🏆 ניצחון לפיורי · 120-108, 120-108, 119-109</div>
+          <p>
+            "מלך הג'יפסים" שב מפרישתו האחרונה ושלט מתחילתו ועד סופו על המחמודוב הבלתי מנוצח — בזכות
+            ג'אב מדויק ומנהיגות זירה קלאסית. מיד לאחר הפעמון, קרא פיורי לאנתוני ג'ושוע — שישב בשורות
+            הראשונות — למערכה גדולה.
+          </p>
+        </div>
+
+        <div class="blog-card reveal">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">אפריל 2026 · The O2, לונדון</span>
+            <span class="blog-card-badge badge-sd">SD · ניצחון מפוצל</span>
+          </div>
+          <h3>דיאונטיי ווילדר נגד דרק צ'יסורה</h3>
+          <div class="blog-card-result">🏆 ניצחון לווילדר · 115-111, 115-113 / 115-112 לצ'יסורה</div>
+          <p>
+            מערכת קרב מרגשת שסיימה את הקריירה של צ'יסורה. שני הלוחמים ספגו והנחיתו ביחסים כמעט שווים
+            (37% דיוק לשניהם), אך השופטים העדיפו את נפח ועוצמת ווילדר. צ'יסורה הודיע בסיום כי סיים לחגור
+            את הכפפות.
+          </p>
+        </div>
+
+        <div class="blog-card reveal">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">מרץ 2026 · Co-op Live, מנצ'סטר</span>
+            <span class="blog-card-badge badge-ko">KO5</span>
+          </div>
+          <h3>מוסס איטאומה נגד ג'רמיין פרנקלין</h3>
+          <div class="blog-card-result">🏆 KO בסבב 5 לאיטאומה</div>
+          <p>
+            הפרוספקט הבריטי בן 20 (14-0) השיג את מה שג'ושוע וווייט לא הצליחו — הפיל את פרנקלין לראשונה
+            בקריירה, בעזרת אפרקט שמאלי ישיר שסיים הכל. ביצועיו של איטאומה שלחו גלי הלם בדיוויזיית
+            המשקל הכבד.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- UPCOMING FIGHTS -->
+      <div class="upcoming-box reveal">
+        <h3>📅 קרבות קרובים</h3>
+        <div class="upcoming-list">
+
+          <div class="upcoming-item">
+            <div class="upcoming-date">25 ביולי 2026</div>
+            <div class="upcoming-fighters">
+              אנתוני ג'ושוע <span class="upcoming-vs">VS</span> קריסטיאן פרנגה
+            </div>
+            <div class="upcoming-detail">ריאד, ערב הסעודית · משקל כבד</div>
+          </div>
+
+          <div class="upcoming-item">
+            <div class="upcoming-date">נובמבר 2026</div>
+            <div class="upcoming-fighters">
+              טייסון פיורי <span class="upcoming-vs">VS</span> אנתוני ג'ושוע
+            </div>
+            <div class="upcoming-detail">וומבלי, לונדון · Netflix · הקרב הגדול ביותר בהיסטוריה הבריטית</div>
+          </div>
+
+          <div class="upcoming-item">
+            <div class="upcoming-date">סוף 2026</div>
+            <div class="upcoming-fighters">
+              אולכסנדר אוסיק <span class="upcoming-vs">VS</span> דניאל דובויס
+            </div>
+            <div class="upcoming-detail">IBF משקל כבד · מיקום יוכרז בקרוב</div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
