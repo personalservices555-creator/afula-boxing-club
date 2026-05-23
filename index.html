@@ -160,6 +160,27 @@ section{padding:5rem 1.5rem}
 .clubs-promo h3{font-size:1.15rem;font-weight:900;margin-bottom:.5rem}
 .clubs-promo p{font-size:.83rem;color:rgba(255,255,255,.48);font-weight:300;line-height:1.65;max-width:480px}
 
+/* ---- FORK SECTION ---- */
+.fork-sect{background:var(--black);padding:5rem 1.5rem}
+.fork-q{text-align:center;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;color:rgba(255,255,255,.45);letter-spacing:.06em;margin-bottom:.6rem}
+.fork-title{text-align:center;font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:3.5rem;line-height:1.1}
+.fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:800px;margin:0 auto}
+.fork-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:3rem 2rem;border-radius:6px;text-decoration:none;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;cursor:pointer}
+.fork-card-trainee{background:linear-gradient(135deg,var(--red-dark) 0%,var(--red) 100%);color:var(--white)}
+.fork-card-trainer{background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);color:var(--white);border:1px solid rgba(245,197,24,.3)}
+.fork-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.fork-card-trainee:hover{box-shadow:0 20px 50px rgba(215,43,43,.35)}
+.fork-card-trainer:hover{box-shadow:0 20px 50px rgba(245,197,24,.15)}
+.fork-icon{font-size:3rem;line-height:1}
+.fork-label{font-size:1.6rem;font-weight:900;letter-spacing:.02em}
+.fork-desc{font-size:.82rem;color:rgba(255,255,255,.6);text-align:center;max-width:220px;line-height:1.55}
+.fork-arrow{font-size:1.2rem;opacity:.5;transition:opacity .2s,transform .2s}
+.fork-card:hover .fork-arrow{opacity:1;transform:translateX(-6px)}
+[dir=ltr] .fork-card:hover .fork-arrow{transform:translateX(6px)}
+.fork-line{display:flex;align-items:center;gap:1rem;max-width:800px;margin:2.5rem auto 0;color:rgba(255,255,255,.2);font-size:.75rem}
+.fork-line::before,.fork-line::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1)}
+@media(max-width:580px){.fork-grid{grid-template-columns:1fr}.fork-card{padding:2.2rem 1.5rem}.fork-card:hover{transform:translateY(-3px)}}
+
 /* ---- PRICING ---- */
 .pricing-sect{background:var(--dark)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
@@ -517,6 +538,27 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
   </div>
 </section>
 
+<!-- FORK: TRAINEE vs TRAINER -->
+<section class="fork-sect reveal" id="fork">
+  <p class="fork-q">ספר לנו מי אתה</p>
+  <h2 class="fork-title">מתאמן <span style="color:var(--red)">או</span> מאמן?</h2>
+  <div class="fork-grid">
+    <a href="trainee.html" class="fork-card fork-card-trainee">
+      <div class="fork-icon">🥊</div>
+      <div class="fork-label">מתאמן</div>
+      <div class="fork-desc">מצא את מועדון האיגרוף הקרוב אליך, קבל מידע על שעות ואמון</div>
+      <div class="fork-arrow">←</div>
+    </a>
+    <a href="trainer-portal.html" class="fork-card fork-card-trainer">
+      <div class="fork-icon">🏆</div>
+      <div class="fork-label">מאמן</div>
+      <div class="fork-desc">הצטרף לפלטפורמה, נהל את לוח האימונים שלך וגדל בקהילה</div>
+      <div class="fork-arrow">←</div>
+    </a>
+  </div>
+  <div class="fork-line">BoxIL — הפלטפורמה הלאומית לאיגרוף קלאסי</div>
+</section>
+
 <!-- LEGEND STRIP 4: FOREMAN + SUGAR RAY -->
 <div class="legend-strip reveal">
   <div class="legend-strip-panels">
@@ -626,11 +668,7 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
 <!-- PRICING -->
 <section class="pricing-sect reveal" id="pricing">
   <div class="sec-inner">
-    <div class="sec-label" data-i18n="price_lbl">מסלולים</div>
-    <h2 class="sec-h" data-i18n="price_h">מחירים שכולם יכולים</h2>
-    <p class="sec-sub" data-i18n="price_sub">השקעה חודשית קטנה — נוכחות דיגיטלית מלאה.</p>
-
-    <div class="pricing-grid" style="margin-top:3rem">
+    <div class="pricing-grid" style="margin-top:0">
 
       <div class="price-card reveal">
         <div class="price-plan">בסיסי</div>
