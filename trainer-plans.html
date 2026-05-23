@@ -74,6 +74,8 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;display:flex;align-items:cen
 .form-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.75rem 1rem;color:var(--white);font-family:'Heebo',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
 .form-input:focus{border-color:var(--red)}
 .form-input::placeholder{color:rgba(255,255,255,.25)}
+select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 1rem center;cursor:pointer}
+select.form-input option{background:var(--dark2);color:var(--white)}
 
 /* PLAN RADIO IN FORM */
 .plan-radio-wrap{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
@@ -208,6 +210,20 @@ footer a:hover{color:var(--yellow)}
         <div class="form-row">
           <label class="form-label" for="f-spec">התמחות (אופציונלי)</label>
           <input class="form-input" type="text" id="f-spec" name="התמחות" placeholder="איגרוף קלאסי, נוער, כוח...">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-time">באיזו שעה לחזור אליך?</label>
+          <select class="form-input" id="f-time" name="שעת_חזרה" required>
+            <option value="" disabled selected>בחר שעה מועדפת...</option>
+            <option>08:00–10:00</option>
+            <option>10:00–12:00</option>
+            <option>12:00–14:00</option>
+            <option>14:00–16:00</option>
+            <option>16:00–18:00</option>
+            <option>18:00–20:00</option>
+            <option>בכל שעה</option>
+          </select>
         </div>
 
         <button type="submit" class="form-submit" id="submit-btn">שלח פרטים — נחזור אליך בקרוב</button>
