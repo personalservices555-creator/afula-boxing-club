@@ -321,6 +321,28 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 
 @media(max-width:600px){.bk-body{padding:1rem 1rem 3rem}.bk-bar{padding:.6rem 1rem}.bk-modal{padding:1.4rem}}
 
+/* ROSTER */
+.roster-section{padding:5rem 1.5rem;background:var(--dark2)}
+.roster-inner{max-width:1100px;margin:0 auto}
+.roster-section .sec-label{color:var(--yellow);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6rem}
+.roster-section h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:.4rem}
+.roster-section .sec-sub{color:rgba(255,255,255,.4);font-size:.88rem;font-weight:300;margin-bottom:2.8rem}
+.roster-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px;border:1px solid rgba(255,255,255,.07)}
+.roster-table{width:100%;border-collapse:collapse;min-width:480px}
+.roster-table thead tr{background:rgba(215,43,43,.12);border-bottom:1px solid rgba(215,43,43,.25)}
+.roster-table th{padding:.75rem 1.1rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.45);text-transform:uppercase;text-align:right;white-space:nowrap}
+.roster-table tbody tr{border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s}
+.roster-table tbody tr:last-child{border-bottom:none}
+.roster-table tbody tr:hover{background:rgba(255,255,255,.03)}
+.roster-table td{padding:.9rem 1.1rem;font-size:.88rem;color:rgba(255,255,255,.78);vertical-align:middle}
+.roster-num{color:rgba(255,255,255,.2);font-size:.75rem;font-weight:700;width:36px}
+.roster-name{font-weight:900;color:var(--white)}
+.roster-badge{display:inline-block;font-size:.66rem;font-weight:700;padding:.2rem .6rem;border-radius:30px;letter-spacing:.06em}
+.badge-beginner{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1)}
+.badge-intermediate{background:rgba(245,197,24,.1);color:var(--yellow);border:1px solid rgba(245,197,24,.25)}
+.badge-advanced{background:rgba(215,43,43,.12);color:var(--red);border:1px solid rgba(215,43,43,.3)}
+.badge-competitive{background:rgba(215,43,43,.2);color:#ff7070;border:1px solid rgba(215,43,43,.45);box-shadow:0 0 8px rgba(215,43,43,.15)}
+
 /* BLOG */
 .blog-section{padding:5rem 1.5rem;background:var(--dark)}
 .blog-section .sec-label{color:var(--yellow);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6rem}
@@ -656,6 +678,38 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
         <div class="group-age" data-i18n="adults_age">גיל 18+</div>
         <div class="group-desc" data-i18n="adults_desc">בין אם אתה רוצה להתחרות ובין אם פשוט לשחרר ולהתחזק — יש כאן מקום בשבילך.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section class="roster-section reveal" id="roster">
+  <div class="roster-inner">
+    <div class="sec-label">המתאגרפים שלנו</div>
+    <h2>מתאגרפים פעילים 🥊</h2>
+    <p class="sec-sub">הלוחמים שמאמנים ומתחרות תחת דגל Ni Boxing Club — עפולה</p>
+
+    <div class="roster-table-wrap">
+      <table class="roster-table">
+        <thead>
+          <tr>
+            <th class="roster-num">#</th>
+            <th>שם</th>
+            <th>גיל</th>
+            <th>גובה</th>
+            <th>רמה</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="roster-num">1</td>
+            <td class="roster-name">דניאל אשכינדזה</td>
+            <td>25</td>
+            <td>195 ס"מ</td>
+            <td><span class="roster-badge badge-competitive">תחרותי</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
