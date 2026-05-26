@@ -132,6 +132,10 @@ section{padding:5rem 1.5rem}
 .trainer-card h4{font-size:.95rem;font-weight:900}
 .trainer-card p{font-size:.82rem;color:rgba(255,255,255,.42);font-weight:300;line-height:1.6}
 .trainer-card .t-tag{font-size:.68rem;font-weight:700;color:var(--yellow);letter-spacing:.08em;text-transform:uppercase}
+.trainer-chat-btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(215,43,43,.15) 0%,rgba(26,26,26,1) 100%);border:1px solid rgba(215,43,43,.4);color:var(--white);text-decoration:none;font-weight:700;font-size:1rem;padding:.85rem 2.2rem;border-radius:4px;transition:border-color .25s,transform .2s,box-shadow .25s}
+.trainer-chat-btn:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 6px 24px rgba(215,43,43,.2)}
+.trainer-chat-btn-icon{font-size:1.2rem}
+.trainer-chat-btn-badge{background:var(--yellow);color:var(--black);font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px}
 
 /* ---- CLUBS ---- */
 .clubs-sect{background:var(--dark)}
@@ -523,6 +527,15 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
         <h4>ניהול מתחרים</h4>
         <p>עקוב אחרי ההתקדמות של המתאמנים שלך, מעקב תחרויות ורישום לאירועים לאומיים.</p>
       </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="trainer-chat.html" class="trainer-chat-btn">
+        <span class="trainer-chat-btn-icon">💬</span>
+        צאט מאמנים
+        <span class="trainer-chat-btn-badge">Pro</span>
+      </a>
+      <p style="margin-top:.75rem;font-size:.78rem;color:rgba(255,255,255,.3)">מרחב ייעודי לתיאום ספארינגים, אימונים משותפים וקשרים מקצועיים</p>
     </div>
   </div>
 </section>
