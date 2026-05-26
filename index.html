@@ -190,6 +190,26 @@ section{padding:5rem 1.5rem}
 @keyframes bounce{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(5px)}}
 @media(max-width:580px){.fork-grid{grid-template-columns:1fr}.fork-card{padding:2.5rem 1.5rem}.fork-title{margin-bottom:2rem}}
 
+/* ---- MANAGER CTA ---- */
+.manager-cta{background:var(--black);padding:5rem 1.5rem;position:relative;overflow:hidden}
+.manager-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(215,43,43,.13) 0%,transparent 70%);pointer-events:none}
+.manager-cta-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;background:linear-gradient(135deg,rgba(215,43,43,.12) 0%,rgba(26,26,26,.95) 60%,rgba(245,197,24,.05) 100%);border:1px solid rgba(215,43,43,.35);border-radius:12px;padding:3.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap}
+.manager-cta-inner::before{content:'🥊';position:absolute;left:2rem;top:50%;transform:translateY(-50%);font-size:7rem;opacity:.05;pointer-events:none;line-height:1}
+.manager-cta-text{flex:1;min-width:260px}
+.manager-cta-tag{font-size:.68rem;font-weight:700;letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:.7rem}
+.manager-cta-h{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;line-height:1.1;margin-bottom:.8rem}
+.manager-cta-h span{color:var(--red)}
+.manager-cta-sub{color:rgba(255,255,255,.45);font-size:.9rem;line-height:1.7;margin-bottom:1.4rem}
+.manager-cta-perks{display:flex;flex-direction:column;gap:.45rem;margin-bottom:0}
+.manager-cta-perk{display:flex;align-items:center;gap:.55rem;font-size:.83rem;color:rgba(255,255,255,.65)}
+.manager-cta-perk::before{content:'✓';color:var(--yellow);font-weight:900;font-size:.8rem;flex-shrink:0}
+.manager-cta-action{display:flex;flex-direction:column;align-items:center;gap:1rem;flex-shrink:0}
+.manager-cta-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--red);color:var(--white);text-decoration:none;font-weight:900;font-size:1rem;padding:1rem 2.2rem;border-radius:4px;transition:background .2s,transform .15s,box-shadow .2s;white-space:nowrap}
+.manager-cta-btn:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(215,43,43,.35)}
+.manager-cta-btn-icon{font-size:1.2rem}
+.manager-cta-note{font-size:.72rem;color:rgba(255,255,255,.28);text-align:center}
+@media(max-width:640px){.manager-cta-inner{padding:2rem 1.5rem;text-align:center;flex-direction:column;align-items:center}.manager-cta-perks{align-items:flex-start;text-align:right}.manager-cta-action{width:100%}.manager-cta-btn{width:100%;justify-content:center}}
+
 /* ---- PRICING ---- */
 .pricing-sect{background:var(--dark)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
@@ -585,6 +605,30 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- MANAGER CTA -->
+<section class="manager-cta">
+  <div class="manager-cta-inner reveal">
+    <div class="manager-cta-text">
+      <div class="manager-cta-tag">בעלי מועדונים</div>
+      <h2 class="manager-cta-h">אני <span>מנהל מועדון</span><br>— רוצה להצטרף</h2>
+      <p class="manager-cta-sub">הצטרף לפלטפורמה הלאומית לאיגרוף ותקבל עמוד מקצועי, מערכת הזמנות ומאות מתאמנים שמחפשים מועדון בעיר שלך.</p>
+      <div class="manager-cta-perks">
+        <div class="manager-cta-perk">עמוד מועדון מקצועי עם פרטים מלאים</div>
+        <div class="manager-cta-perk">הופעה במפת BoxIL הלאומית</div>
+        <div class="manager-cta-perk">מערכת הזמנות אוטומטית</div>
+        <div class="manager-cta-perk">חיבור לכל מאמני המועדון</div>
+      </div>
+    </div>
+    <div class="manager-cta-action">
+      <a href="https://wa.me/9720548274422?text=היי%20BoxIL%20🥊%0Aאני%20מנהל%20מועדון%20איגרוף%20ואני%20רוצה%20להצטרף%20לפלטפורמה!" target="_blank" rel="noopener noreferrer" class="manager-cta-btn">
+        <span class="manager-cta-btn-icon">📲</span>
+        שלח לי פרטים
+      </a>
+      <div class="manager-cta-note">ניצור קשר תוך 24 שעות</div>
+    </div>
   </div>
 </section>
 
