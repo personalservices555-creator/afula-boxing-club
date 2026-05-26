@@ -61,6 +61,21 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;display:flex;align-items:cen
 .plan-features li{font-size:.81rem;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:.5rem;line-height:1.4}
 .plan-features li::before{content:'✓';color:var(--yellow);font-weight:900;flex-shrink:0;margin-top:.05rem}
 .plan-features li.pro-feat::before{color:var(--red)}
+.plan-features li.boxpool-feat{background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.22);border-radius:4px;padding:.45rem .65rem;margin:0 -.65rem;color:var(--white);font-weight:700}
+.plan-features li.boxpool-feat::before{content:'🚗';font-size:.85rem}
+.bp-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:.52rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:.1rem .35rem;border-radius:2px;vertical-align:middle;margin-right:.3rem}
+
+/* BOXPOOL EXPLAINER */
+.bp-box{max-width:860px;margin:2rem auto 0;padding:0 1.5rem}
+.bp-inner{background:linear-gradient(135deg,rgba(245,197,24,.07) 0%,rgba(26,26,26,1) 70%);border:1px solid rgba(245,197,24,.25);border-radius:10px;padding:2rem 2.5rem;display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap}
+.bp-icon-col{font-size:3rem;flex-shrink:0;line-height:1;padding-top:.2rem}
+.bp-content-col{flex:1;min-width:220px}
+.bp-title{font-size:1.05rem;font-weight:900;color:var(--yellow);margin-bottom:.5rem}
+.bp-desc{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1rem}
+.bp-steps{display:flex;flex-direction:column;gap:.45rem}
+.bp-step{display:flex;align-items:flex-start;gap:.7rem;font-size:.82rem;color:rgba(255,255,255,.68);line-height:1.45}
+.bp-step-num{background:var(--yellow);color:var(--black);font-size:.65rem;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+@media(max-width:600px){.bp-inner{padding:1.5rem 1.2rem}}
 
 /* FORM SECTION */
 .form-sect{max-width:560px;margin:3.5rem auto 5rem;padding:0 1.5rem}
@@ -159,9 +174,39 @@ footer a:hover{color:var(--yellow)}
         <li class="pro-feat">קביעת אימון אוטומטית</li>
         <li class="pro-feat">תשלום מראש באתר</li>
         <li class="pro-feat">ביטול ודחייה אוטומטיים</li>
+          <li class="boxpool-feat"><span class="bp-badge">חדש</span>BoxPool — הסעות משותפות לילדים</li>
       </ul>
     </div>
 
+  </div>
+</div>
+
+<!-- BOXPOOL EXPLAINER -->
+<div class="bp-box reveal">
+  <div class="bp-inner">
+    <div class="bp-icon-col">🚗</div>
+    <div class="bp-content-col">
+      <div class="bp-title">BoxPool — ניהול הסעות לחוגי ילדים</div>
+      <div class="bp-desc">פתרון קהילתי חכם שמאפשר להורים לחלוק ביניהם את האחריות על איסוף ופיזור הילדים מהאימון. כל קבוצה מורכבת מ<strong style="color:var(--white)">עד 2 זוגות הורים</strong> — ככה כל משפחה נוסעת פעם אחת מתוך שתיים בלבד.</div>
+      <div class="bp-steps">
+        <div class="bp-step">
+          <div class="bp-step-num">1</div>
+          <span>הורה נרשם ומציין שכונה + ימי אימון של הילד</span>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">2</div>
+          <span>המערכת מחברת בין 2 משפחות מאותה שכונה בלבד</span>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">3</div>
+          <span>כל שבוע נשלח ווטסאפ אוטומטי: "השבוע נוסע משה — נאסוף את הילדים ב-17:30"</span>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">4</div>
+          <span>המאמן רואה בדשבורד מי מגיע ומי מוסע — אפס בלגן</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
