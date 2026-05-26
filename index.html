@@ -229,6 +229,13 @@ section{padding:5rem 1.5rem}
 .price-btn-outline:hover{border-color:var(--white);color:var(--white)}
 .price-btn-solid{background:var(--yellow);color:var(--black)}
 .price-btn-solid:hover{background:#d4a700}
+.price-features li.feature-boxpool{color:var(--white);font-weight:700;background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.25);border-radius:4px;padding:.4rem .6rem;margin:0 -.6rem}
+.price-features li.feature-boxpool::before{content:"🚗";font-size:.85rem}
+.feature-boxpool-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:.55rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:.1rem .35rem;border-radius:2px;margin-right:.3rem;vertical-align:middle}
+.boxpool-note{margin-top:2.5rem;background:rgba(245,197,24,.06);border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1.2rem;max-width:680px;margin-left:auto;margin-right:auto}
+.boxpool-note-icon{font-size:2.2rem;flex-shrink:0}
+.boxpool-note-title{font-size:.92rem;font-weight:900;color:var(--yellow);margin-bottom:.3rem}
+.boxpool-note-text{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
 
 /* ---- CTA BAND ---- */
 .cta-band{background:var(--black);padding:5rem 1.5rem;text-align:center}
@@ -662,6 +669,7 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
           <li>מאמנים ללא הגבלה</li>
           <li>סטטיסטיקות מתאמנים</li>
           <li>תמיכה ישירה</li>
+          <li class="feature-boxpool"><span class="feature-boxpool-badge">חדש</span>BoxPool — נסיעות משותפות לילדים</li>
         </ul>
         <a href="#cta" class="price-btn price-btn-solid">הצטרף עכשיו</a>
       </div>
@@ -676,11 +684,21 @@ footer small{color:rgba(255,255,255,.25);font-size:.75rem;font-weight:300}
           <li>דף נחיתה מותאם אישית</li>
           <li>קידום אירועים ותחרויות</li>
           <li>API ואינטגרציות</li>
+          <li class="feature-boxpool"><span class="feature-boxpool-badge">חדש</span>BoxPool — נסיעות משותפות לילדים</li>
         </ul>
         <a href="#cta" class="price-btn price-btn-outline">דברו איתנו</a>
       </div>
 
     </div>
+
+    <div class="boxpool-note reveal">
+      <div class="boxpool-note-icon">🚗</div>
+      <div class="boxpool-note-body">
+        <div class="boxpool-note-title">BoxPool — נסיעות משותפות לחוגי ילדים</div>
+        <div class="boxpool-note-text">הורים במועדון מתאמים ביניהם איסוף ופיזור ילדים לאימון. המערכת מחברת לפי שכונה ושולחת אישור ווטסאפ אוטומטי. בטוח, מסודר, קהילתי.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
