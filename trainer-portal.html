@@ -238,59 +238,45 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
 
 <div class="toast" id="toast"></div>
 
-<!-- FIREBASE SDK -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-         sendPasswordResetEmail, signOut, onAuthStateChanged }
-  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, updateDoc }
-  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-
-// ===== FIREBASE CONFIG — מלא כאן את הפרטים מ-Firebase Console =====
-const firebaseConfig = {
-  apiKey:            "PASTE_YOUR_API_KEY",
-  authDomain:        "PASTE_YOUR_AUTH_DOMAIN",
-  projectId:         "PASTE_YOUR_PROJECT_ID",
-  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId:             "PASTE_YOUR_APP_ID"
+<script>
+// ===== DEMO MODE — credentials checked locally, data saved to localStorage =====
+const DEMO_USERS = {
+  'danielashkinadze@gmail.com': { password: '1111', name: 'דניאל' }
 };
-// ====================================================================
 
-const app  = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db   = getFirestore(app);
+const db = {
+  get: (key)      => JSON.parse(localStorage.getItem('boxil_' + key) || 'null'),
+  set: (key, val) => localStorage.setItem('boxil_' + key, JSON.stringify(val)),
+  update: (key, patch) => {
+    const cur = db.get(key) || {};
+    db.set(key, Object.assign(cur, patch));
+  }
+};
+
+let currentUser = null;
 
 const DAYS  = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
 const SLOTS = ['06:00','07:00','08:00','09:00','10:00','11:00','12:00',
                '13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'];
-let currentUser = null;
 let schedData   = {};
 let profileData = {};
 let activeDays  = new Set();
 
-// ---- AUTH STATE ----
-onAuthStateChanged(auth, async user => {
-  if (!user) { showScreen('auth'); return; }
-  currentUser = user;
-  const snap = await getDoc(doc(db, 'trainers', user.uid));
-  if (!snap.exists()) {
-    // New user — create record, mark pending
-    await setDoc(doc(db, 'trainers', user.uid), {
-      email: user.email, approved: false, createdAt: Date.now()
-    });
-    showScreen('pending');
-    return;
+// ---- AUTH STATE — check localStorage session ----
+(function initSession() {
+  const saved = sessionStorage.getItem('boxil_session');
+  if (saved) {
+    const user = JSON.parse(saved);
+    currentUser = user;
+    const data = db.get('trainer_' + user.email) || { schedule: {}, profile: {} };
+    schedData   = data.schedule || {};
+    profileData = data.profile  || {};
+    loadDashboard(user, data);
+    showScreen('dashboard');
+  } else {
+    showScreen('auth');
   }
-  const data = snap.data();
-  if (!data.approved) { showScreen('pending'); return; }
-  // Approved — load dashboard
-  schedData   = data.schedule || {};
-  profileData = data.profile  || {};
-  loadDashboard(user, data);
-  showScreen('dashboard');
-});
+})();
 
 function showScreen(name) {
   document.getElementById('auth-screen').style.display    = name === 'auth'      ? 'flex' : 'none';
@@ -299,21 +285,30 @@ function showScreen(name) {
 }
 
 // ---- LOGIN ----
-window.doLogin = async function() {
-  const email = document.getElementById('login-email').value.trim();
+window.doLogin = function() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pass  = document.getElementById('login-pass').value;
   const btn   = document.getElementById('btn-login');
   const err   = document.getElementById('login-err');
   err.textContent = '';
   if (!email || !pass) { err.textContent = 'מלא מייל וסיסמה'; return; }
   btn.disabled = true; btn.textContent = '...';
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-  } catch(e) {
-    err.textContent = e.code === 'auth/invalid-credential'
-      ? 'מייל או סיסמה שגויים' : 'שגיאה — נסה שוב';
-    btn.disabled = false; btn.textContent = 'כניסה לפורטל ←';
-  }
+
+  setTimeout(() => {
+    const user = DEMO_USERS[email];
+    if (!user || user.password !== pass) {
+      err.textContent = 'מייל או סיסמה שגויים';
+      btn.disabled = false; btn.textContent = 'כניסה לפורטל ←';
+      return;
+    }
+    currentUser = { email, name: user.name };
+    sessionStorage.setItem('boxil_session', JSON.stringify(currentUser));
+    const data = db.get('trainer_' + email) || { schedule: {}, profile: {} };
+    schedData   = data.schedule || {};
+    profileData = data.profile  || {};
+    loadDashboard(currentUser, data);
+    showScreen('dashboard');
+  }, 600);
 };
 
 window.toggleFirstTimeBanner = function() {
@@ -325,25 +320,25 @@ window.toggleFirstTimeBanner = function() {
 };
 
 // ---- RESET PASSWORD ----
-window.doReset = async function() {
+window.doReset = function() {
   const email = document.getElementById('login-email').value.trim();
   if (!email) { document.getElementById('login-err').textContent = 'הזן מייל תחילה'; return; }
-  try {
-    await sendPasswordResetEmail(auth, email);
-    document.getElementById('login-err').style.color = 'var(--yellow)';
-    document.getElementById('login-err').textContent = '✓ מייל איפוס נשלח — בדוק תיבת הדואר';
-  } catch(e) {
-    document.getElementById('login-err').textContent = 'לא נמצא מייל זה במערכת';
-  }
+  const errEl = document.getElementById('login-err');
+  errEl.style.color = 'var(--yellow)';
+  errEl.textContent = '✓ אם המייל קיים במערכת — ישלח אליו מייל איפוס';
 };
 
 // ---- LOGOUT ----
-window.doLogout = async function() { await signOut(auth); };
+window.doLogout = function() {
+  sessionStorage.removeItem('boxil_session');
+  currentUser = null;
+  showScreen('auth');
+};
 
 // ---- DASHBOARD ----
 function loadDashboard(user, data) {
   document.getElementById('dash-email-label').textContent = user.email;
-  const name = data.profile?.name || user.email.split('@')[0];
+  const name = data.profile?.name || user.name || user.email.split('@')[0];
   document.getElementById('dash-name').textContent = name;
 
   // Profile fields
@@ -402,16 +397,15 @@ function buildSlotUI() {
   });
 }
 
-window.saveSchedule = async function() {
+window.saveSchedule = function() {
   if (!currentUser) return;
-  await updateDoc(doc(db, 'trainers', currentUser.uid), { schedule: schedData });
-  // update stat
+  db.update('trainer_' + currentUser.email, { schedule: schedData });
   const total = Object.values(schedData).reduce((s, d) => s + Object.keys(d).length, 0);
   document.getElementById('stat-slots').textContent = total;
   showToast('✓ לוח הזמנים נשמר!');
 };
 
-window.saveProfile = async function() {
+window.saveProfile = function() {
   if (!currentUser) return;
   const profile = {
     name:  document.getElementById('pf-name').value.trim(),
@@ -419,15 +413,14 @@ window.saveProfile = async function() {
     spec:  document.getElementById('pf-spec').value.trim(),
     phone: document.getElementById('pf-phone').value.trim()
   };
-  await updateDoc(doc(db, 'trainers', currentUser.uid), { profile });
+  db.update('trainer_' + currentUser.email, { profile });
   document.getElementById('dash-name').textContent = profile.name || currentUser.email.split('@')[0];
   showToast('✓ הפרופיל עודכן!');
 };
 
 // ---- UI HELPERS ----
 window.switchTab = function(tab) {
-  document.getElementById('form-login').style.display    = tab === 'login'    ? '' : 'none';
-  document.getElementById('form-register').style.display = tab === 'register' ? '' : 'none';
+  document.getElementById('form-login').style.display = tab === 'login' ? '' : 'none';
   document.querySelectorAll('.auth-tab').forEach((b, i) =>
     b.classList.toggle('active', (i === 0) === (tab === 'login')));
 };
