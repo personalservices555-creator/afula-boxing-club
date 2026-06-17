@@ -57,7 +57,10 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;display:flex;align-items:cen
 .hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:5.5rem 1.5rem 3rem}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 90% 45%,rgba(215,43,43,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 35% at 5% 85%,rgba(245,197,24,.05) 0%,transparent 55%),var(--black)}
 .hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(-55deg,transparent,transparent 60px,rgba(215,43,43,.03) 60px,rgba(215,43,43,.03) 61px)}
-.hero-content{position:relative;z-index:2;max-width:700px;width:100%;display:flex;flex-direction:column;gap:2rem}
+.hero-inner{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;gap:3.5rem}
+.hero-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:2rem}
+.hero-photo-wrap{flex:0 0 420px;animation:fadeUp .6s .35s ease both}
+.hero-photo-wrap img{width:100%;border-radius:12px;border:2px solid rgba(215,43,43,.45);box-shadow:0 12px 48px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.05)}
 .hero-tag{display:inline-block;background:var(--red);color:var(--white);font-size:.66rem;font-weight:700;letter-spacing:.2em;padding:.26rem .85rem;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 100%,0 100%);margin-bottom:.6rem;animation:fadeUp .6s ease both}
 .hero h1{font-size:clamp(2.8rem,9.5vw,5.8rem);font-weight:900;line-height:.9;letter-spacing:-.025em;animation:fadeUp .6s .1s ease both}
 .line-red{color:var(--red);display:block}
@@ -210,6 +213,8 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
   .about-inner{grid-template-columns:1fr;gap:2rem}
   .features-grid{grid-template-columns:1fr 1fr}
   .groups-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+  .hero-inner{flex-direction:column;gap:2rem}
+  .hero-photo-wrap{flex:none;width:100%;max-width:500px;order:-1}
   .hero-ctas{grid-template-columns:1fr;gap:.6rem}
   .wa-strip-btns{width:100%;justify-content:flex-start}
   footer{flex-direction:column;text-align:center}
@@ -277,31 +282,36 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
-  <div class="hero-content">
-    <div>
-      <div class="hero-tag" data-i18n="hero_tag">🥊 NI BOXING CLUB — עפולה</div>
-      <h1>
-        <span data-i18n="hero_h1_line1">קשוחים באימון.</span>
-        <span class="line-red" data-i18n="hero_h1_line2">חזקים בחיים.</span>
-      </h1>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div>
+        <div class="hero-tag" data-i18n="hero_tag">🥊 NI BOXING CLUB — עפולה</div>
+        <h1>
+          <span data-i18n="hero_h1_line1">קשוחים באימון.</span>
+          <span class="line-red" data-i18n="hero_h1_line2">חזקים בחיים.</span>
+        </h1>
+      </div>
+      <p class="hero-desc" data-i18n="hero_desc">המועדון של עפולה. מאמנים שחיו את הזירה — עכשיו כאן בשבילך. קבוצות לכל הגילאים, אימונים פרטיים ואווירה שלא תמצא בשום מקום אחר.</p>
+      <div class="hero-ctas">
+        <a href="#groups" class="hero-cta-block hero-cta-main">
+          <div class="hc-label" data-i18n="cta1_label">👊 אימוני קבוצות</div>
+          <div class="hc-sub" data-i18n="cta1_sub">ילדים · נוער · מבוגרים · כל הגילאים</div>
+          <div class="hc-arrow" data-i18n="cta1_arrow">לצפייה בקבוצות ←</div>
+        </a>
+        <a href="#groups" class="hero-cta-block hero-cta-women" onclick="document.getElementById('women-section').scrollIntoView({behavior:'smooth'});return false;">
+          <div class="hc-label" data-i18n="cta2_label">💪 קבוצת נשים בלבד</div>
+          <div class="hc-sub" data-i18n="cta2_sub">סביבה נשית בלעדית · לכל הרמות</div>
+          <div class="hc-arrow" data-i18n="cta2_arrow">להצטרפות ←</div>
+        </a>
+        <a href="https://wa.me/972543157080?text=היי%20Ni%20Boxing%20Club%20🥊%0Aאני%20מתעניין%2Fת%20לקבוע%20אימון%20פרטי%20עם%20אחד%20המאמנים.%0Aאשמח%20לשמוע%20על%20הזמינות%20והמחירים%20🙏" target="_blank" rel="noopener noreferrer" class="hero-cta-block hero-cta-private">
+          <div class="hc-label" data-i18n="cta3_label">🥊 קבע אימון פרטי</div>
+          <div class="hc-sub" data-i18n="cta3_sub">הודעה מוכנה — רק לאשר ולשלוח</div>
+          <div class="hc-arrow" data-i18n="cta3_arrow">📲 פתח וואטסאפ ←</div>
+        </a>
+      </div>
     </div>
-    <p class="hero-desc" data-i18n="hero_desc">המועדון של עפולה. מאמנים שחיו את הזירה — עכשיו כאן בשבילך. קבוצות לכל הגילאים, אימונים פרטיים ואווירה שלא תמצא בשום מקום אחר.</p>
-    <div class="hero-ctas">
-      <a href="#groups" class="hero-cta-block hero-cta-main">
-        <div class="hc-label" data-i18n="cta1_label">👊 אימוני קבוצות</div>
-        <div class="hc-sub" data-i18n="cta1_sub">ילדים · נוער · מבוגרים · כל הגילאים</div>
-        <div class="hc-arrow" data-i18n="cta1_arrow">לצפייה בקבוצות ←</div>
-      </a>
-      <a href="#groups" class="hero-cta-block hero-cta-women" onclick="document.getElementById('women-section').scrollIntoView({behavior:'smooth'});return false;">
-        <div class="hc-label" data-i18n="cta2_label">💪 קבוצת נשים בלבד</div>
-        <div class="hc-sub" data-i18n="cta2_sub">סביבה נשית בלעדית · לכל הרמות</div>
-        <div class="hc-arrow" data-i18n="cta2_arrow">להצטרפות ←</div>
-      </a>
-      <a href="https://wa.me/972543157080?text=היי%20Ni%20Boxing%20Club%20🥊%0Aאני%20מתעניין%2Fת%20לקבוע%20אימון%20פרטי%20עם%20אחד%20המאמנים.%0Aאשמח%20לשמוע%20על%20הזמינות%20והמחירים%20🙏" target="_blank" rel="noopener noreferrer" class="hero-cta-block hero-cta-private">
-        <div class="hc-label" data-i18n="cta3_label">🥊 קבע אימון פרטי</div>
-        <div class="hc-sub" data-i18n="cta3_sub">הודעה מוכנה — רק לאשר ולשלוח</div>
-        <div class="hc-arrow" data-i18n="cta3_arrow">📲 פתח וואטסאפ ←</div>
-      </a>
+    <div class="hero-photo-wrap">
+      <img src="trainees.jpg" alt="מתאמני מועדון איגרוף עפולה" loading="eager" />
     </div>
   </div>
 </section>
