@@ -171,6 +171,10 @@ html[dir="ltr"] .women-motivation{border-right:none;border-left:2px solid var(--
 .trainers-list{display:flex;flex-direction:row;gap:1.1rem}
 .trainer-card{background:var(--black);border:1px solid rgba(255,255,255,.06);border-top:4px solid var(--red);display:flex;flex-direction:column;flex:1;overflow:hidden;transition:transform .2s,border-top-color .2s;border-radius:3px}
 .trainer-card:hover{transform:translateY(-4px);border-top-color:var(--yellow)}
+.trainer-photo{height:220px;overflow:hidden;flex-shrink:0;background:var(--dark2)}
+.trainer-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .4s ease}
+.trainer-card:hover .trainer-photo img{transform:scale(1.04)}
+.trainer-avatar{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--gray),var(--dark2));font-size:3rem;font-weight:900;color:rgba(255,255,255,.15)}
 .trainer-info{padding:1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
 .trainer-name{font-size:1.25rem;font-weight:900;margin-bottom:.2rem}
 .trainer-ics-tag{font-size:.65rem;font-weight:700;color:var(--yellow);letter-spacing:.1em;margin-bottom:.7rem}
@@ -379,12 +383,8 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 
     <div class="trainers-list">
       <div class="trainer-card reveal">
-        <div class="trainer-photo" onclick="document.getElementById('upload-ran').click()">
-          <input type="file" class="photo-upload-input" id="upload-ran" accept="image/*" onchange="previewPhoto(this,'photo-ran')">
-          <div class="trainer-photo-placeholder" id="photo-ran">
-            <div class="avatar-letter">ר</div>
-            <div class="upload-hint" data-i18n="trainer_upload">לחץ להוספת תמונה</div>
-          </div>
+        <div class="trainer-photo">
+          <img src="ran.png" alt="רן — מאמן איגרוף" loading="lazy" />
         </div>
         <div class="trainer-info">
           <div class="trainer-name" data-i18n="ran_name">רן</div>
@@ -398,12 +398,8 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
       </div>
 
       <div class="trainer-card reveal">
-        <div class="trainer-photo" onclick="document.getElementById('upload-yosef').click()">
-          <input type="file" class="photo-upload-input" id="upload-yosef" accept="image/*" onchange="previewPhoto(this,'photo-yosef')">
-          <div class="trainer-photo-placeholder" id="photo-yosef">
-            <div class="avatar-letter" style="background:var(--yellow);color:var(--black);">י</div>
-            <div class="upload-hint" data-i18n="trainer_upload">לחץ להוספת תמונה</div>
-          </div>
+        <div class="trainer-photo">
+          <img src="yosef.jpg" alt="יוסף — מאמן איגרוף" loading="lazy" />
         </div>
         <div class="trainer-info">
           <div class="trainer-name" data-i18n="yosef_name">יוסף</div>
@@ -417,12 +413,8 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
       </div>
 
       <div class="trainer-card reveal">
-        <div class="trainer-photo" onclick="document.getElementById('upload-daniel').click()">
-          <input type="file" class="photo-upload-input" id="upload-daniel" accept="image/*" onchange="previewPhoto(this,'photo-daniel')">
-          <div class="trainer-photo-placeholder" id="photo-daniel">
-            <div class="avatar-letter" style="background:var(--gray);">ד</div>
-            <div class="upload-hint" data-i18n="trainer_upload">לחץ להוספת תמונה</div>
-          </div>
+        <div class="trainer-photo">
+          <img src="daniel.jpg" alt="דניאל — מאמן איגרוף" loading="lazy" />
         </div>
         <div class="trainer-info">
           <div class="trainer-name" data-i18n="daniel_name">דניאל</div>
