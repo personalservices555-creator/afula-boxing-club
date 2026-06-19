@@ -73,7 +73,7 @@ nav{position:fixed;top:0;right:0;left:0;z-index:200;display:flex;align-items:cen
 .hero-desc{font-size:clamp(.88rem,2.2vw,.98rem);font-weight:300;line-height:1.82;color:rgba(255,255,255,.62);max-width:460px;animation:fadeUp .6s .2s ease both}
 
 /* Hero CTAs */
-.hero-ctas{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;animation:fadeUp .6s .3s ease both}
+.hero-ctas{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;animation:fadeUp .6s .3s ease both}
 .hero-cta-block{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;text-decoration:none;border-radius:6px;transition:transform .2s,box-shadow .2s}
 .hero-cta-block:hover{transform:translateY(-3px)}
 .hc-label{font-size:.85rem;font-weight:900;color:var(--white)}
@@ -182,6 +182,18 @@ html[dir="ltr"] .women-motivation{border-right:none;border-left:2px solid var(--
 .trainer-achievements{margin-top:auto;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:.35rem}
 .ach{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:.35rem}
 
+/* TRAINER WA BUTTON */
+.trainer-wa-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;padding:.7rem;background:#25D366;color:var(--white);text-decoration:none;font-family:inherit;font-size:.82rem;font-weight:900;border-radius:4px;transition:opacity .2s,transform .15s}
+.trainer-wa-btn:hover{opacity:.88;transform:translateY(-2px)}
+/* EQUIPMENT */
+.equipment{background:var(--dark2)}
+.equipment-card{background:var(--black);border:1px solid rgba(255,255,255,.06);border-right:4px solid var(--yellow);padding:2rem;border-radius:3px;display:flex;align-items:flex-start;gap:1.5rem;margin-top:1.5rem}
+.equipment-icon{font-size:3rem;flex-shrink:0;line-height:1}
+.equipment-title{font-size:1.2rem;font-weight:900;color:var(--yellow);margin-bottom:.5rem}
+.equipment-desc{font-size:.88rem;color:rgba(255,255,255,.62);line-height:1.8;font-weight:300}
+.equipment-wa-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;padding:.65rem 1.4rem;background:#25D366;color:var(--white);text-decoration:none;font-family:inherit;font-size:.85rem;font-weight:900;border-radius:4px;transition:opacity .2s,transform .15s}
+.equipment-wa-btn:hover{opacity:.88;transform:translateY(-2px)}
+@media(max-width:600px){.equipment-card{flex-direction:column;gap:1rem}}
 /* FOOTER */
 footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:1.6rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
 .footer-logo{font-size:.9rem;font-weight:900}
@@ -297,10 +309,10 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
           <div class="hc-sub" data-i18n="cta2_sub">סביבה נשית בלעדית · לכל הרמות</div>
           <div class="hc-arrow" data-i18n="cta2_arrow">להצטרפות ←</div>
         </a>
-        <a href="https://wa.me/972543157080?text=היי%20Ni%20Boxing%20Club%20🥊%0Aאני%20מתעניין%2Fת%20לקבוע%20אימון%20פרטי%20עם%20אחד%20המאמנים.%0Aאשמח%20לשמוע%20על%20הזמינות%20והמחירים%20🙏" target="_blank" rel="noopener noreferrer" class="hero-cta-block hero-cta-private">
+        <a href="#trainers" class="hero-cta-block hero-cta-private" onclick="document.getElementById('trainers').scrollIntoView({behavior:'smooth'});return false;">
           <div class="hc-label" data-i18n="cta3_label">🥊 קבע אימון פרטי</div>
-          <div class="hc-sub" data-i18n="cta3_sub">הודעה מוכנה — רק לאשר ולשלוח</div>
-          <div class="hc-arrow" data-i18n="cta3_arrow">📲 פתח וואטסאפ ←</div>
+          <div class="hc-sub" data-i18n="cta3_sub">בחר מאמן ותיאם ישירות</div>
+          <div class="hc-arrow" data-i18n="cta3_arrow">לבחירת מאמן ←</div>
         </a>
       </div>
     </div>
@@ -396,6 +408,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
             <div class="ach" data-i18n="ran_ach1">🥇 אליפות אירופה — מקום מכובד</div>
             <div class="ach" data-i18n="ran_ach2">🇮🇱 ייצוג ישראל בבינלאומי</div>
           </div>
+          <a href="https://wa.me/972543157080?text=היי%20רן%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="trainer-wa-btn">📲 קבע אימון פרטי עם רן</a>
         </div>
       </div>
 
@@ -411,6 +424,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
             <div class="ach" data-i18n="yosef_ach1">🌍 תחרויות מקצועיות בחו"ל</div>
             <div class="ach" data-i18n="yosef_ach2">🏅 קרבות אולימפיים בישראל</div>
           </div>
+          <a href="https://wa.me/972509277918?text=היי%20יוסף%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="trainer-wa-btn">📲 קבע אימון פרטי עם יוסף</a>
         </div>
       </div>
 
@@ -426,6 +440,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
             <div class="ach" data-i18n="daniel_ach1">🥊 תחרויות מקצועיות בישראל</div>
             <div class="ach" data-i18n="daniel_ach2">🏅 תחרויות אולימפיות</div>
           </div>
+          <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="trainer-wa-btn">📲 קבע אימון פרטי עם דניאל</a>
         </div>
       </div>
     </div>
@@ -506,6 +521,24 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
   </div>
 </section>
 
+<!-- EQUIPMENT -->
+<section class="equipment" id="equipment">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">ציוד מקצועי</div>
+      <h2 class="section-title">ציוד איגרוף <span>ברמה הגבוהה ביותר</span></h2>
+    </div>
+    <div class="equipment-card reveal">
+      <div class="equipment-icon">🥊</div>
+      <div>
+        <div class="equipment-title">המועדון מוכר ציוד איגרוף מקצועי</div>
+        <div class="equipment-desc">כפפות, שקים, קסדות, תחבושות וכל מה שצריך — ציוד ברמה הגבוהה ביותר שמתאים לכל מתאגרף, מהמתחיל ועד הוותיק. מומלץ ומאושר על ידי המאמנים שלנו.</div>
+        <a href="https://wa.me/972543157080?text=היי%20Ni%20Boxing%20Club%20🥊%0Aאני%20מעוניין%2Fת%20לשמוע%20על%20ציוד%20האיגרוף%20שלכם.%0Aאשמח%20לפרטים%20ומחירים%20🙏" target="_blank" rel="noopener noreferrer" class="equipment-wa-btn">📲 לפרטים ומחירים</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
@@ -538,8 +571,8 @@ const langs = {
     cta2_sub: 'סביבה נשית בלעדית · לכל הרמות',
     cta2_arrow: 'להצטרפות ←',
     cta3_label: '🥊 קבע אימון פרטי',
-    cta3_sub: 'הודעה מוכנה — רק לאשר ולשלוח',
-    cta3_arrow: '📲 פתח וואטסאפ ←',
+    cta3_sub: 'בחר מאמן ותיאם ישירות',
+    cta3_arrow: 'לבחירת מאמן ←',
     wa_title: 'יש שאלות? דברו איתנו ישירות 💬',
     wa_sub: 'עונים מהר — בין אם זו שאלה על קבוצה, שעות או אימון פרטי',
     wa_hours: '⏰ א\'–ה\' 06:00–21:30 | ו\' 06:00–14:00 | מוצ"ש עד 22:00',
@@ -626,8 +659,8 @@ const langs = {
     cta2_sub: 'Женская среда · Для всех уровней',
     cta2_arrow: 'Присоединиться →',
     cta3_label: '🥊 Записаться на личную тренировку',
-    cta3_sub: 'Сообщение готово — просто подтверди и отправь',
-    cta3_arrow: '📲 Открыть WhatsApp →',
+    cta3_sub: 'Выбери тренера и договорись напрямую',
+    cta3_arrow: 'Выбрать тренера →',
     wa_title: 'Есть вопросы? Напишите нам напрямую 💬',
     wa_sub: 'Отвечаем быстро — вопрос о группе, расписании или личной тренировке',
     wa_hours: '⏰ Пн–Пт 06:00–21:30 | Пт 06:00–14:00 | Суб до 22:00',
@@ -714,8 +747,8 @@ const langs = {
     cta2_sub: 'بيئة نسائية حصرية · لجميع المستويات',
     cta2_arrow: 'انضمي الآن ←',
     cta3_label: '🥊 احجز تدريباً خاصاً',
-    cta3_sub: 'الرسالة جاهزة — فقط أكّد وأرسل',
-    cta3_arrow: '📲 فتح واتساب ←',
+    cta3_sub: 'اختر مدرباً وتواصل مباشرة',
+    cta3_arrow: 'اختيار مدرب ←',
     wa_title: 'هل لديك أسئلة؟ تحدث إلينا مباشرة 💬',
     wa_sub: 'نرد بسرعة — سواء كان سؤالاً عن مجموعة أو مواعيد أو تدريب خاص',
     wa_hours: '⏰ الأحد–الخميس 06:00–21:30 | الجمعة 06:00–14:00 | السبت حتى 22:00',
