@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יוסף | מאמן איגרוף — Ni Boxing Club עפולה</title>
+<meta name="description" content="יוסף — מאמן איגרוף קלאסי, תחרויות מקצועיות בחו&quot;ל וקרבות אולימפיים בישראל. אימונים פרטיים בעפולה.">
+<meta property="og:title" content="יוסף | מאמן איגרוף — Ni Boxing Club">
+<meta property="og:description" content="לוחם שעשה את זה בגדול — תחרויות מקצועיות בחו&quot;ל, קרבות אולימפיים בישראל. כיום מאמן ב-Ni Boxing Club עפולה.">
+<meta property="og:image" content="https://personalservices555-creator.github.io/afula-boxing-club/yosef.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#D72B2B;--yellow:#F5C518;--black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--gray:#2A2A2A;--white:#FFFFFF}
+body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);direction:rtl;overflow-x:hidden}
+.topbar{position:fixed;top:0;right:0;left:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(215,43,43,.2);padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between}
+.topbar-logo{font-size:.85rem;font-weight:900;text-decoration:none;color:var(--white)}
+.topbar-logo span{color:var(--red)}
+.topbar-back{font-size:.78rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.topbar-back:hover{color:var(--white)}
+.topbar-wa{background:var(--red);color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;padding:.38rem .9rem;border-radius:3px;transition:opacity .2s}
+.topbar-wa:hover{opacity:.85}
+.hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.3) 0%,rgba(10,10,10,.1) 40%,rgba(10,10,10,.95) 80%,var(--black) 100%)}
+.hero-content{position:relative;z-index:2;padding:2rem 1.5rem 3rem;width:100%;max-width:700px;margin:0 auto}
+.hero-tag{display:inline-block;background:var(--red);color:var(--white);font-size:.62rem;font-weight:700;letter-spacing:.18em;padding:.22rem .75rem;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 100%,0 100%);margin-bottom:.8rem}
+.hero-name{font-size:clamp(3rem,14vw,5.5rem);font-weight:900;line-height:.88;letter-spacing:-.03em}
+.hero-title{font-size:clamp(.88rem,3vw,1.05rem);font-weight:300;color:rgba(255,255,255,.65);margin-top:.6rem;letter-spacing:.04em}
+.hero-phone{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;font-size:1.15rem;font-weight:700;color:var(--yellow);text-decoration:none;letter-spacing:.03em}
+.hero-phone:hover{opacity:.85}
+.stats{background:var(--dark2);border-top:3px solid var(--red);border-bottom:1px solid rgba(255,255,255,.05);padding:1.4rem 1.5rem}
+.stats-inner{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center}
+.stat-num{font-size:clamp(1.8rem,6vw,2.5rem);font-weight:900;color:var(--red);line-height:1}
+.stat-label{font-size:.68rem;color:rgba(255,255,255,.45);margin-top:.25rem;font-weight:300}
+.bio-section{padding:2.5rem 1.5rem;max-width:700px;margin:0 auto}
+.section-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:.6rem}
+.bio-text{font-size:clamp(.95rem,2.5vw,1.05rem);line-height:1.85;color:rgba(255,255,255,.72);font-weight:300}
+.achievements{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
+.ach{display:flex;align-items:center;gap:.6rem;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.8);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-right:3px solid var(--red);padding:.7rem 1rem;border-radius:2px}
+.cta-section{padding:1.5rem 1.5rem 3rem;max-width:700px;margin:0 auto;text-align:center}
+.cta-title{font-size:clamp(1.4rem,5vw,2rem);font-weight:900;margin-bottom:.5rem}
+.cta-sub{font-size:.88rem;color:rgba(255,255,255,.48);margin-bottom:1.6rem;font-weight:300}
+.wa-btn{display:inline-flex;align-items:center;gap:.7rem;background:#25D366;color:var(--white);text-decoration:none;font-family:inherit;font-size:1.05rem;font-weight:900;padding:1rem 2rem;border-radius:5px;width:100%;max-width:380px;justify-content:center;transition:opacity .2s,transform .15s;box-shadow:0 6px 24px rgba(37,211,102,.3)}
+.wa-btn:hover{opacity:.9;transform:translateY(-2px)}
+.phone-line{margin-top:1.2rem;font-size:.85rem;color:rgba(255,255,255,.35)}
+.phone-line a{color:var(--yellow);text-decoration:none;font-weight:700}
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:1.2rem 1.5rem;text-align:center}
+footer a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.75rem;transition:color .2s}
+footer a:hover{color:var(--white)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="topbar-logo">Ni <span>Boxing</span> Club</a>
+  <a href="index.html" class="topbar-back">← חזרה לאתר</a>
+  <a href="https://wa.me/972509277918?text=היי%20יוסף%20🥊%20רציתי%20לשמוע%20על%20אימון%20פרטי" target="_blank" rel="noopener noreferrer" class="topbar-wa">📲 צור קשר</a>
+</div>
+
+<section class="hero">
+  <img class="hero-img" src="yosef.png" alt="יוסף מאמן איגרוף" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🥊 NI BOXING CLUB — עפולה</div>
+    <div class="hero-name">יוסף</div>
+    <div class="hero-title">מאמן איגרוף קלאסי · בוגר ICS · ניסיון בינלאומי</div>
+    <a href="tel:0509277918" class="hero-phone">📞 050-927-7918</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">🌍</div><div class="stat-label">תחרויות בחו"ל</div></div>
+    <div><div class="stat-num">🏅</div><div class="stat-label">קרבות אולימפיים</div></div>
+    <div><div class="stat-num">🎓</div><div class="stat-label">בוגר ICS</div></div>
+  </div>
+</div>
+
+<div class="bio-section">
+  <div class="section-tag">על המאמן</div>
+  <p class="bio-text">לוחם שעשה את זה בגדול — השתתף בתחרויות מקצועיות בחו"ל ובקרבות אולימפיים בארץ. ניסיון שקשה למצוא, ותשוקה לאיגרוף שמורגשת בכל אימון.</p>
+  <div class="achievements">
+    <div class="ach">🌍 תחרויות מקצועיות בחו"ל</div>
+    <div class="ach">🏅 קרבות אולימפיים בישראל</div>
+    <div class="ach">🥊 ניסיון קרבי בינלאומי מוכח</div>
+    <div class="ach">🎓 בוגר ICS — המכללה הישראלית לספורט</div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-title">קבע אימון פרטי עם יוסף</div>
+  <div class="cta-sub">שלח הודעה ותקבל מענה מהיר</div>
+  <a href="https://wa.me/972509277918?text=היי%20יוסף%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="wa-btn">
+    <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><path d="M34.5 13.5A14.85 14.85 0 0 0 24 9C15.72 9 9 15.72 9 24c0 2.64.69 5.22 2.01 7.5L9 39l7.74-2.01A14.94 14.94 0 0 0 24 39c8.28 0 15-6.72 15-15 0-4.02-1.56-7.8-4.5-10.5zM24 36.3a12.24 12.24 0 0 1-6.24-1.71l-.45-.27-4.59 1.2 1.23-4.47-.3-.48A12.27 12.27 0 0 1 11.7 24c0-6.78 5.52-12.3 12.3-12.3 3.27 0 6.36 1.29 8.67 3.6A12.18 12.18 0 0 1 36.3 24c0 6.78-5.52 12.3-12.3 12.3zm6.75-9.21c-.36-.18-2.16-1.065-2.49-1.185-.33-.12-.57-.18-.81.18-.24.36-.93 1.185-1.14 1.425-.21.24-.42.27-.78.09-.36-.18-1.53-.564-2.91-1.794-1.077-.96-1.803-2.145-2.013-2.505-.21-.36-.021-.555.159-.735.162-.162.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.294-.705-.588-.609-.81-.621l-.69-.012c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.535 3.87 6.144 5.43.858.369 1.527.591 2.049.756.861.273 1.644.234 2.262.141.69-.102 2.124-.867 2.424-1.704.3-.837.3-1.554.21-1.704-.09-.15-.33-.24-.69-.42z" fill="white"/></svg>
+    📲 שלח הודעה בוואטסאפ
+  </a>
+  <div class="phone-line">או התקשר ישירות: <a href="tel:0509277918">050-927-7918</a></div>
+</div>
+
+<footer>
+  <a href="index.html">← חזרה לאתר המועדון | Ni Boxing Club עפולה</a>
+</footer>
+
+</body>
+</html>
