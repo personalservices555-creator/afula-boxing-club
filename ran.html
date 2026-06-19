@@ -63,6 +63,17 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
 footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:1.2rem 1.5rem;text-align:center}
 footer a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.75rem;transition:color .2s}
 footer a:hover{color:var(--white)}
+.equip-section{background:var(--dark2);padding:2.5rem 1.5rem;border-top:3px solid var(--yellow)}
+.equip-inner{max-width:700px;margin:0 auto}
+.equip-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:.5rem}
+.equip-title{font-size:clamp(1.4rem,5vw,2rem);font-weight:900;margin-bottom:.5rem}
+.equip-title span{color:var(--yellow)}
+.equip-desc{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.82;font-weight:300;margin-bottom:1.4rem}
+.equip-items{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.6rem}
+.equip-item{display:flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-right:3px solid var(--yellow);padding:.65rem .9rem;border-radius:2px;font-size:.83rem;font-weight:600}
+.equip-wa-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;background:#25D366;color:var(--white);text-decoration:none;font-family:inherit;font-size:1rem;font-weight:900;padding:.95rem 2rem;border-radius:5px;max-width:380px;transition:opacity .2s,transform .15s;box-shadow:0 6px 24px rgba(37,211,102,.28)}
+.equip-wa-btn:hover{opacity:.9;transform:translateY(-2px)}
+@media(max-width:480px){.equip-items{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -111,6 +122,25 @@ footer a:hover{color:var(--white)}
     📲 שלח הודעה בוואטסאפ
   </a>
   <div class="phone-line">או התקשר ישירות: <a href="tel:0543157080">054-315-7080</a></div>
+</div>
+
+<div class="equip-section">
+  <div class="equip-inner">
+    <div class="equip-tag">🛒 ציוד מקצועי</div>
+    <h2 class="equip-title">ציוד איגרוף <span>ברמה הגבוהה ביותר</span></h2>
+    <p class="equip-desc">כל הציוד שתצטרך — מומלץ ונבחר אישית על ידי רן מתוך ניסיון של שנים בזירה.</p>
+    <div class="equip-items">
+      <div class="equip-item">🥊 כפפות איגרוף</div>
+      <div class="equip-item">🏋️ שקי אגרוף</div>
+      <div class="equip-item">⛑️ קסדות מגן</div>
+      <div class="equip-item">🩹 תחבושות</div>
+      <div class="equip-item">🦷 מגיני שיניים</div>
+      <div class="equip-item">👟 נעלי איגרוף</div>
+    </div>
+    <a href="https://wa.me/972543157080?text=היי%20רן%20🥊%0Aאני%20מעוניין%2Fת%20לרכוש%20ציוד%20איגרוף.%0Aאשמח%20לשמוע%20מה%20יש%20לך%20ומה%20המחירים%20🙏" target="_blank" rel="noopener noreferrer" class="equip-wa-btn">
+      📲 שלח הודעה לרן לגבי ציוד
+    </a>
+  </div>
 </div>
 
 <footer>
