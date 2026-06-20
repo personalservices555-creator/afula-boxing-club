@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>דניאל | מאמן איגרוף — Ni Boxing Club עפולה</title>
-<meta name="description" content="דניאל — מאמן איגרוף קלאסי, תחרויות מקצועיות ואולימפיות בישראל. אימונים פרטיים בעפולה.">
-<meta property="og:title" content="דניאל | מאמן איגרוף — Ni Boxing Club">
-<meta property="og:description" content="תחרותי מהטבע — תחרויות מקצועיות ואולימפיות בישראל. כיום מאמן ב-Ni Boxing Club עפולה — קבע אימון פרטי עכשיו.">
+<title>דניאל | אימוני איגרוף פרטיים — Ni Boxing Club עפולה</title>
+<meta name="description" content="אימון פרטי עם דניאל — מאמן איגרוף קלאסי, בוגר ICS, תחרויות מקצועיות ואולימפיות בישראל. תכנית אישית לכושר, ביטחון עצמי ותוצאות אמיתיות. עפולה.">
+<meta property="og:title" content="דניאל | אימוני איגרוף פרטיים — Ni Boxing Club">
+<meta property="og:description" content="הדרך שלך לכושר, ביטחון עצמי ותוצאות אמיתיות. תכנית אישית עם מאמן מקצועי — קבע אימון עכשיו.">
 <meta property="og:image" content="https://personalservices555-creator.github.io/afula-boxing-club/daniel.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#D72B2B;--yellow:#F5C518;--black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--gray:#2A2A2A;--white:#FFFFFF}
-body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);direction:rtl;overflow-x:hidden}
+:root{--red:#D72B2B;--red-dark:#9E1111;--yellow:#F5C518;--black:#0A0A0A;--dark:#111111;--dark2:#1A1A1A;--gray:#2A2A2A;--white:#FFFFFF}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);direction:rtl;overflow-x:hidden;padding-bottom:0}
+
+/* TOPBAR */
 .topbar{position:fixed;top:0;right:0;left:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(215,43,43,.2);padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between}
 .topbar-logo{font-size:.85rem;font-weight:900;text-decoration:none;color:var(--white)}
 .topbar-logo span{color:var(--red)}
@@ -22,34 +25,127 @@ body{font-family:'Heebo',sans-serif;background:var(--black);color:var(--white);d
 .topbar-back:hover{color:var(--white)}
 .topbar-wa{background:var(--red);color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;padding:.38rem .9rem;border-radius:3px;transition:opacity .2s}
 .topbar-wa:hover{opacity:.85}
+
+/* HERO */
 .hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.3) 0%,rgba(10,10,10,.1) 40%,rgba(10,10,10,.95) 80%,var(--black) 100%)}
-.hero-content{position:relative;z-index:2;padding:2rem 1.5rem 3rem;width:100%;max-width:700px;margin:0 auto}
-.hero-tag{display:inline-block;background:var(--red);color:var(--white);font-size:.62rem;font-weight:700;letter-spacing:.18em;padding:.22rem .75rem;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 100%,0 100%);margin-bottom:.8rem}
-.hero-name{font-size:clamp(3rem,14vw,5.5rem);font-weight:900;line-height:.88;letter-spacing:-.03em}
-.hero-title{font-size:clamp(.88rem,3vw,1.05rem);font-weight:300;color:rgba(255,255,255,.65);margin-top:.6rem;letter-spacing:.04em}
-.hero-phone{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;font-size:1.15rem;font-weight:700;color:var(--yellow);text-decoration:none;letter-spacing:.03em}
-.hero-phone:hover{opacity:.85}
-.stats{background:var(--dark2);border-top:3px solid var(--red);border-bottom:1px solid rgba(255,255,255,.05);padding:1.4rem 1.5rem}
-.stats-inner{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center}
-.stat-num{font-size:clamp(1.8rem,6vw,2.5rem);font-weight:900;color:var(--red);line-height:1}
-.stat-label{font-size:.68rem;color:rgba(255,255,255,.45);margin-top:.25rem;font-weight:300}
-.bio-section{padding:2.5rem 1.5rem;max-width:700px;margin:0 auto}
-.section-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:.6rem}
-.bio-text{font-size:clamp(.95rem,2.5vw,1.05rem);line-height:1.85;color:rgba(255,255,255,.72);font-weight:300}
-.achievements{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
-.ach{display:flex;align-items:center;gap:.6rem;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.8);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-right:3px solid var(--red);padding:.7rem 1rem;border-radius:2px}
-.cta-section{padding:1.5rem 1.5rem 3rem;max-width:700px;margin:0 auto;text-align:center}
-.cta-title{font-size:clamp(1.4rem,5vw,2rem);font-weight:900;margin-bottom:.5rem}
-.cta-sub{font-size:.88rem;color:rgba(255,255,255,.48);margin-bottom:1.6rem;font-weight:300}
-.wa-btn{display:inline-flex;align-items:center;gap:.7rem;background:#25D366;color:var(--white);text-decoration:none;font-family:inherit;font-size:1.05rem;font-weight:900;padding:1rem 2rem;border-radius:5px;width:100%;max-width:380px;justify-content:center;transition:opacity .2s,transform .15s;box-shadow:0 6px 24px rgba(37,211,102,.3)}
-.wa-btn:hover{opacity:.9;transform:translateY(-2px)}
-.phone-line{margin-top:1.2rem;font-size:.85rem;color:rgba(255,255,255,.35)}
-.phone-line a{color:var(--yellow);text-decoration:none;font-weight:700}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.45) 0%,rgba(10,10,10,.15) 35%,rgba(10,10,10,.96) 82%,var(--black) 100%)}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(-55deg,transparent,transparent 60px,rgba(215,43,43,.05) 60px,rgba(215,43,43,.05) 61px);z-index:1}
+.hero-content{position:relative;z-index:2;padding:2rem 1.5rem 3rem;width:100%;max-width:760px;margin:0 auto}
+.hero-tag{display:inline-block;background:var(--red);color:var(--white);font-size:.62rem;font-weight:700;letter-spacing:.18em;padding:.26rem .8rem;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 100%,0 100%);margin-bottom:1rem;animation:fadeUp .6s ease both}
+.hero h1{font-size:clamp(1.9rem,6.2vw,3.2rem);font-weight:900;line-height:1.08;letter-spacing:-.02em;margin-bottom:.8rem;animation:fadeUp .6s .08s ease both}
+.hero h1 span{color:var(--red)}
+.hero-sub{font-size:clamp(.92rem,2.4vw,1.05rem);font-weight:300;color:rgba(255,255,255,.7);max-width:520px;line-height:1.7;margin-bottom:1.3rem;animation:fadeUp .6s .16s ease both}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem;animation:fadeUp .6s .24s ease both}
+.hero-badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);font-size:.72rem;font-weight:700;padding:.4rem .85rem;border-radius:20px}
+.hero-ctas{display:flex;gap:.7rem;flex-wrap:wrap;animation:fadeUp .6s .32s ease both}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;text-decoration:none;font-family:inherit;font-weight:900;border-radius:5px;padding:.95rem 1.7rem;font-size:.95rem;transition:transform .15s,opacity .2s,box-shadow .2s;cursor:pointer;border:none}
+.btn-wa{background:#25D366;color:var(--white);box-shadow:0 6px 24px rgba(37,211,102,.35);animation:pulseGlow 2.6s ease infinite}
+.btn-wa:hover{transform:translateY(-2px);opacity:.92}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+.btn-outline:hover{border-color:var(--yellow);color:var(--yellow)}
+@keyframes pulseGlow{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.35)}50%{box-shadow:0 6px 32px rgba(37,211,102,.6)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* TRUST STRIP */
+.trust-strip{background:var(--dark2);border-top:3px solid var(--red);border-bottom:1px solid rgba(255,255,255,.06);padding:1.3rem 1.5rem}
+.trust-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center}
+.trust-item{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.trust-icon{font-size:1.6rem}
+.trust-label{font-size:.72rem;color:rgba(255,255,255,.55);font-weight:600;line-height:1.4}
+
+/* SECTIONS */
+section{padding:3.5rem 1.5rem}
+.section-inner{max-width:900px;margin:0 auto}
+.section-tag{font-size:.64rem;font-weight:700;letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:.55rem}
+.section-title{font-size:clamp(1.5rem,4.2vw,2.1rem);font-weight:900;line-height:1.15;margin-bottom:.6rem}
+.section-title span{color:var(--red)}
+.section-desc{font-size:.88rem;color:rgba(255,255,255,.5);max-width:560px;line-height:1.7;font-weight:300}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ABOUT */
+.about{background:var(--black)}
+.bio-text{font-size:clamp(.92rem,2.3vw,1rem);line-height:1.9;color:rgba(255,255,255,.72);font-weight:300;margin-top:1.2rem;max-width:680px}
+.achievements{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.ach{display:flex;align-items:center;gap:.6rem;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.82);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-right:3px solid var(--red);padding:.75rem 1rem;border-radius:2px}
+
+/* PROCESS */
+.process{background:var(--dark)}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem}
+.process-step{background:var(--black);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:1.4rem 1.2rem;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.process-step:hover{transform:translateY(-3px);border-color:rgba(215,43,43,.4)}
+.process-num{font-size:.7rem;font-weight:900;color:var(--red);letter-spacing:.1em;margin-bottom:.5rem}
+.process-icon{font-size:1.6rem;margin-bottom:.5rem}
+.process-title{font-size:.92rem;font-weight:900;margin-bottom:.35rem}
+.process-desc{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.6;font-weight:300}
+
+/* BENEFITS */
+.benefits{background:var(--black)}
+.benefits-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:1.8rem}
+.benefit-card{background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-top:3px solid var(--yellow);padding:1.3rem 1rem;border-radius:3px;text-align:center;transition:transform .2s,border-top-color .2s}
+.benefit-card:hover{transform:translateY(-4px);border-top-color:var(--red)}
+.benefit-icon{font-size:1.7rem;margin-bottom:.6rem}
+.benefit-title{font-size:.82rem;font-weight:900;margin-bottom:.3rem}
+.benefit-desc{font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.5;font-weight:300}
+
+/* COMPETITION CTA */
+.competition{background:linear-gradient(135deg,#1a0c0c,#0a0a0a);border-top:1px solid rgba(215,43,43,.25);border-bottom:1px solid rgba(215,43,43,.25)}
+.competition-box{display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap}
+.competition-icon{font-size:3rem;flex-shrink:0}
+.competition-text{flex:1;min-width:220px}
+.competition-title{font-size:clamp(1.2rem,3.5vw,1.6rem);font-weight:900;margin-bottom:.5rem}
+.competition-title span{color:var(--red)}
+.competition-desc{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.75;font-weight:300;margin-bottom:1.1rem}
+
+/* LEAD FORM */
+.lead{background:var(--dark2)}
+.lead-box{background:var(--black);border:1px solid rgba(255,255,255,.08);border-top:4px solid var(--red);border-radius:6px;padding:2rem 1.8rem;max-width:520px;margin:1.8rem auto 0;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lead-box-title{font-size:1.15rem;font-weight:900;margin-bottom:.3rem;text-align:center}
+.lead-box-sub{font-size:.78rem;color:rgba(255,255,255,.45);text-align:center;margin-bottom:1.4rem;font-weight:300}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:.4rem}
+.field input{width:100%;background:var(--dark2);border:1.5px solid rgba(255,255,255,.12);color:var(--white);font-family:inherit;font-size:.92rem;padding:.8rem .95rem;border-radius:4px;transition:border-color .2s}
+.field input:focus{outline:none;border-color:var(--red)}
+.lead-submit{width:100%;background:var(--red);color:var(--white);font-family:inherit;font-weight:900;font-size:1rem;padding:1rem;border:none;border-radius:5px;cursor:pointer;transition:background .2s,transform .15s;margin-top:.4rem}
+.lead-submit:hover{background:var(--red-dark);transform:translateY(-2px)}
+.lead-note{text-align:center;font-size:.7rem;color:rgba(255,255,255,.35);margin-top:.9rem}
+.lead-divider{display:flex;align-items:center;gap:.7rem;margin:1.3rem 0;color:rgba(255,255,255,.3);font-size:.72rem}
+.lead-divider::before,.lead-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1)}
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--red-dark),var(--red));text-align:center;padding:3.2rem 1.5rem}
+.final-cta-title{font-size:clamp(1.4rem,4.5vw,2.2rem);font-weight:900;margin-bottom:.6rem}
+.final-cta-sub{font-size:.9rem;color:rgba(255,255,255,.85);margin-bottom:1.6rem;font-weight:300}
+.final-cta .btn-wa{background:var(--black);color:var(--white);box-shadow:0 8px 28px rgba(0,0,0,.4)}
+.final-cta .btn-wa:hover{background:#000}
+
+/* FOOTER */
 footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:1.2rem 1.5rem;text-align:center}
 footer a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.75rem;transition:color .2s}
 footer a:hover{color:var(--white)}
+
+/* STICKY MOBILE CTA */
+.sticky-cta{display:none;position:fixed;bottom:0;right:0;left:0;z-index:90;background:rgba(10,10,10,.97);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);padding:.7rem 1rem;box-shadow:0 -8px 24px rgba(0,0,0,.4)}
+.sticky-cta .btn{width:100%}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .achievements{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .benefits-grid{grid-template-columns:1fr 1fr 1fr}
+  .competition-box{text-align:center;justify-content:center}
+  .sticky-cta{display:block}
+  body{padding-bottom:68px}
+}
+@media(max-width:480px){
+  section{padding:2.8rem 1.2rem}
+  .process-grid{grid-template-columns:1fr}
+  .benefits-grid{grid-template-columns:1fr 1fr}
+  .lead-box{padding:1.6rem 1.3rem}
+  .hero-ctas .btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -60,49 +156,156 @@ footer a:hover{color:var(--white)}
   <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%20רציתי%20לשמוע%20על%20אימון%20פרטי" target="_blank" rel="noopener noreferrer" class="topbar-wa">📲 צור קשר</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <img class="hero-img" src="daniel.png" alt="דניאל מאמן איגרוף" />
   <div class="hero-overlay"></div>
+  <div class="hero-lines"></div>
   <div class="hero-content">
     <div class="hero-tag">🥊 NI BOXING CLUB — עפולה</div>
-    <div class="hero-name">דניאל</div>
-    <div class="hero-title">מאמן איגרוף קלאסי · בוגר ICS · תחרויות אולימפיות</div>
-    <a href="tel:0548274422" class="hero-phone">📞 054-827-4422</a>
+    <h1>אימון פרטי עם דניאל<br><span>הדרך שלך</span> לכושר, ביטחון עצמי ותוצאות אמיתיות</h1>
+    <p class="hero-sub">תכנית אישית בליווי מלא — מתאימה למתחילים ולמתקדמים, לגברים ולנשים. בלי קשר לרמת הניסיון שלך.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">🎓 בוגר ICS</span>
+      <span class="hero-badge">🥊 תחרויות מקצועיות</span>
+      <span class="hero-badge">🏅 תחרויות אולימפיות</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+        <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><path d="M34.5 13.5A14.85 14.85 0 0 0 24 9C15.72 9 9 15.72 9 24c0 2.64.69 5.22 2.01 7.5L9 39l7.74-2.01A14.94 14.94 0 0 0 24 39c8.28 0 15-6.72 15-15 0-4.02-1.56-7.8-4.5-10.5zM24 36.3a12.24 12.24 0 0 1-6.24-1.71l-.45-.27-4.59 1.2 1.23-4.47-.3-.48A12.27 12.27 0 0 1 11.7 24c0-6.78 5.52-12.3 12.3-12.3 3.27 0 6.36 1.29 8.67 3.6A12.18 12.18 0 0 1 36.3 24c0 6.78-5.52 12.3-12.3 12.3zm6.75-9.21c-.36-.18-2.16-1.065-2.49-1.185-.33-.12-.57-.18-.81.18-.24.36-.93 1.185-1.14 1.425-.21.24-.42.27-.78.09-.36-.18-1.53-.564-2.91-1.794-1.077-.96-1.803-2.145-2.013-2.505-.21-.36-.021-.555.159-.735.162-.162.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.294-.705-.588-.609-.81-.621l-.69-.012c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.535 3.87 6.144 5.43.858.369 1.527.591 2.049.756.861.273 1.644.234 2.262.141.69-.102 2.124-.867 2.424-1.704.3-.837.3-1.554.21-1.704-.09-.15-.33-.24-.69-.42z" fill="white"/></svg>
+        קבע אימון עכשיו
+      </a>
+      <a href="#lead-form" class="btn btn-outline">השאר פרטים ונחזור אליך</a>
+    </div>
   </div>
 </section>
 
-<div class="stats">
-  <div class="stats-inner">
-    <div><div class="stat-num">🥊</div><div class="stat-label">תחרויות מקצועיות</div></div>
-    <div><div class="stat-num">🏅</div><div class="stat-label">תחרויות אולימפיות</div></div>
-    <div><div class="stat-num">🎓</div><div class="stat-label">בוגר ICS</div></div>
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-icon">🎓</div><div class="trust-label">מאמן מוסמך<br>בוגר ICS</div></div>
+    <div class="trust-item"><div class="trust-icon">🥊</div><div class="trust-label">ניסיון תחרותי<br>מקצועי</div></div>
+    <div class="trust-item"><div class="trust-icon">🏅</div><div class="trust-label">השתתפות<br>בתחרויות אולימפיות</div></div>
   </div>
 </div>
 
-<div class="bio-section">
-  <div class="section-tag">על המאמן</div>
-  <p class="bio-text">תחרותי מהטבע — השתתף בתחרויות מקצועיות ואולימפיות בישראל. מביא אנרגיה, דיוק ומוטיבציה שמרגישים בכל אימון.</p>
-  <div class="achievements">
-    <div class="ach">🥊 תחרויות מקצועיות בישראל</div>
-    <div class="ach">🏅 תחרויות אולימפיות</div>
-    <div class="ach">⚡ אנרגיה ודיוק בכל אימון</div>
-    <div class="ach">🎓 בוגר ICS — המכללה הישראלית לספורט</div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner reveal">
+    <div class="section-tag">על המאמן</div>
+    <h2 class="section-title">מי <span>הוא דניאל</span></h2>
+    <p class="bio-text">תחרותי מהטבע — השתתף בתחרויות מקצועיות ואולימפיות בישראל. דניאל מביא אנרגיה, דיוק ומוטיבציה שמרגישים בכל אימון, ומתאים את התכנית באופן אישי לכל מתאמן — בין אם המטרה היא כושר, ירידה במשקל, ביטחון עצמי או הכנה לתחרות.</p>
+    <div class="achievements">
+      <div class="ach">🥊 תחרויות מקצועיות בישראל</div>
+      <div class="ach">🏅 תחרויות אולימפיות</div>
+      <div class="ach">⚡ אנרגיה ודיוק בכל אימון</div>
+      <div class="ach">🎓 בוגר ICS — המכללה הישראלית לספורט</div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="cta-section">
-  <div class="cta-title">קבע אימון פרטי עם דניאל</div>
-  <div class="cta-sub">שלח הודעה ותקבל מענה מהיר</div>
-  <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="wa-btn">
-    <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><path d="M34.5 13.5A14.85 14.85 0 0 0 24 9C15.72 9 9 15.72 9 24c0 2.64.69 5.22 2.01 7.5L9 39l7.74-2.01A14.94 14.94 0 0 0 24 39c8.28 0 15-6.72 15-15 0-4.02-1.56-7.8-4.5-10.5zM24 36.3a12.24 12.24 0 0 1-6.24-1.71l-.45-.27-4.59 1.2 1.23-4.47-.3-.48A12.27 12.27 0 0 1 11.7 24c0-6.78 5.52-12.3 12.3-12.3 3.27 0 6.36 1.29 8.67 3.6A12.18 12.18 0 0 1 36.3 24c0 6.78-5.52 12.3-12.3 12.3zm6.75-9.21c-.36-.18-2.16-1.065-2.49-1.185-.33-.12-.57-.18-.81.18-.24.36-.93 1.185-1.14 1.425-.21.24-.42.27-.78.09-.36-.18-1.53-.564-2.91-1.794-1.077-.96-1.803-2.145-2.013-2.505-.21-.36-.021-.555.159-.735.162-.162.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.294-.705-.588-.609-.81-.621l-.69-.012c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.535 3.87 6.144 5.43.858.369 1.527.591 2.049.756.861.273 1.644.234 2.262.141.69-.102 2.124-.867 2.424-1.704.3-.837.3-1.554.21-1.704-.09-.15-.33-.24-.69-.42z" fill="white"/></svg>
-    📲 שלח הודעה בוואטסאפ
-  </a>
-  <div class="phone-line">או התקשר ישירות: <a href="tel:0548274422">054-827-4422</a></div>
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner reveal">
+    <div class="section-tag">תכנית האימון</div>
+    <h2 class="section-title">איך נראה <span>אימון עם דניאל</span></h2>
+    <p class="section-desc">כל אימון בנוי בקפידה כדי למקסם תוצאות — מהחימום ועד הסיום.</p>
+    <div class="process-grid">
+      <div class="process-step"><div class="process-num">01</div><div class="process-icon">🔥</div><div class="process-title">חימום ומתיחות</div><div class="process-desc">הכנת הגוף לאימון ומניעת פציעות</div></div>
+      <div class="process-step"><div class="process-num">02</div><div class="process-icon">🥊</div><div class="process-title">לימוד טכניקה</div><div class="process-desc">יסודות איגרוף נכונים — עמידה, תנועה ומכות</div></div>
+      <div class="process-step"><div class="process-num">03</div><div class="process-icon">🏋️</div><div class="process-title">עבודה על שק</div><div class="process-desc">תרגול עוצמה, דיוק וקצב</div></div>
+      <div class="process-step"><div class="process-num">04</div><div class="process-icon">🤝</div><div class="process-title">עבודה בזוגות</div><div class="process-desc">תגובה, תזמון ושיפור תחושת המרחק</div></div>
+      <div class="process-step"><div class="process-num">05</div><div class="process-icon">🛡️</div><div class="process-title">ספרינג מבוקר</div><div class="process-desc">למתקדמים — תחת השגחה מלאה</div></div>
+      <div class="process-step"><div class="process-num">06</div><div class="process-icon">💪</div><div class="process-title">כוח וסיבולת</div><div class="process-desc">תרגילי גוף שמחזקים את הביצועים</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="section-inner reveal">
+    <div class="section-tag">למה איגרוף</div>
+    <h2 class="section-title">מה <span>תרוויח</span></h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon">💪</div><div class="benefit-title">כושר גופני</div><div class="benefit-desc">שיפור ניכר בסיבולת ובחוזק</div></div>
+      <div class="benefit-card"><div class="benefit-icon">⚖️</div><div class="benefit-title">ירידה במשקל</div><div class="benefit-desc">אימון אינטנסיבי שמשרת את המטרה</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🧠</div><div class="benefit-title">ביטחון עצמי</div><div class="benefit-desc">תחושת שליטה וחוזק פנימי</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🎯</div><div class="benefit-title">משמעת עצמית</div><div class="benefit-desc">מסגרת והתמדה שמלווה לחיים</div></div>
+      <div class="benefit-card"><div class="benefit-icon">🛡️</div><div class="benefit-title">הגנה עצמית</div><div class="benefit-desc">כלים מעשיים שמרגישים בטוחים</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="competition" id="competition">
+  <div class="section-inner reveal">
+    <div class="competition-box">
+      <div class="competition-icon">🏆</div>
+      <div class="competition-text">
+        <div class="competition-title">מתכוונ/ת <span>להתחרות?</span></div>
+        <p class="competition-desc">לדניאל ניסיון אישי בתחרויות מקצועיות ואולימפיות — והוא מלווה מתאמנים שרוצים להתכונן לתחרות באופן מקצועי ומסודר, מהבסיס ועד ליום הקרב.</p>
+        <a href="https://wa.me/972548274422?text=היי%20דניאל%20🏆%0Aאני%20מתעניין%2Fת%20בהכנה%20מקצועית%20לתחרות.%0Aאשמח%20לשמוע%20פרטים%20🙏" target="_blank" rel="noopener noreferrer" class="btn btn-wa">📲 בקש/י הכנה לתחרות</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="lead" id="lead-form">
+  <div class="section-inner reveal" style="text-align:center">
+    <div class="section-tag" style="text-align:center">הצעד הבא</div>
+    <h2 class="section-title">השאר/י פרטים <span>ודניאל יחזור אליך</span></h2>
+    <p class="section-desc" style="margin:0 auto">מלא/י שם וטלפון — ההודעה תיפתח אוטומטית בוואטסאפ, מוכנה לשליחה.</p>
+
+    <form class="lead-box" id="leadForm">
+      <div class="lead-box-title">קביעת אימון עם דניאל</div>
+      <div class="lead-box-sub">מענה אישי ומהיר</div>
+      <div class="field">
+        <label for="leadName">שם מלא</label>
+        <input type="text" id="leadName" required placeholder="איך קוראים לך?">
+      </div>
+      <div class="field">
+        <label for="leadPhone">מספר טלפון</label>
+        <input type="tel" id="leadPhone" required placeholder="05X-XXXXXXX">
+      </div>
+      <button type="submit" class="lead-submit">📲 קבע אימון עכשיו</button>
+      <div class="lead-divider">או</div>
+      <div class="phone-line" style="text-align:center;font-size:.85rem;color:rgba(255,255,255,.4)">התקשר/י ישירות: <a href="tel:0548274422" style="color:var(--yellow);font-weight:700;text-decoration:none">054-827-4422</a></div>
+      <div class="lead-note">הפרטים נשלחים ישירות לדניאל בוואטסאפ — לא נשמרים בשום מקום אחר</div>
+    </form>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="final-cta-title">מוכן/ה להתחיל?</div>
+  <div class="final-cta-sub">השלב הראשון לכושר, ביטחון עצמי ותוצאות — מתחיל בהודעה אחת</div>
+  <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="btn btn-wa">📲 שלח הודעה בוואטסאפ</a>
 </div>
 
 <footer>
   <a href="index.html">← חזרה לאתר המועדון | Ni Boxing Club עפולה</a>
 </footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a href="https://wa.me/972548274422?text=היי%20דניאל%20🥊%0Aאני%20מתעניין%2Fת%20באימון%20פרטי%20איתך.%0Aאשמח%20לשמוע%20על%20הזמינות%20והפרטים%20🙏" target="_blank" rel="noopener noreferrer" class="btn btn-wa">📲 קבע אימון עכשיו</a>
+</div>
+
+<script>
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('leadName').value.trim();
+  var phone = document.getElementById('leadPhone').value.trim();
+  var text = 'היי דניאל 🥊\nשמי ' + name + ' (טלפון: ' + phone + ')\nאני מעוניין/ת לקבוע אימון פרטי. אשמח שתחזור/י אליי 🙏';
+  window.open('https://wa.me/972548274422?text=' + encodeURIComponent(text), '_blank', 'noopener');
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
